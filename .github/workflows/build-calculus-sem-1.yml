@@ -3,7 +3,7 @@ name: Build Calculus Notes - Semester 1
 on:
   push:
     branches: [ master ]
-    paths: [ &wd 'src/calculus/sem-1/**' ]
+    paths: [ 'src/calculus/sem-1/**' ]
 
 jobs:
   build-latex:
@@ -17,6 +17,6 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
-          working_directory: *wd
+          working_directory: 'src/calculus/sem-1/**'
           compiler: latexmk
           args: -jobname=notes-calculus-semester-1 -pdf -file-line-error -halt-on-error -interaction=nonstopmode
