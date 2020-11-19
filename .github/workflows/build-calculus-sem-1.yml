@@ -19,4 +19,10 @@ jobs:
           root_file: main.tex
           working_directory: 'src/calculus/sem-1/'
           compiler: latexmk
-          args: -jobname=notes-calculus-semester-1 -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+          args: -jobname=calculus-sem-1 -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+
+      - name: Upload pdf document
+        uses: actions/upload-artifact@v2
+        with:
+          name: Calculus Notes - Semester 1
+          path: notes/notes-calculus-semester-1.pdf
