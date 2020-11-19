@@ -1,2 +1,1 @@
-# notes-calculus
-Lecture notes - Calculus
+# Work In Progress
