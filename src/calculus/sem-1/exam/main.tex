@@ -1,4 +1,5 @@
-\documentclass[12pt, a4]{article}
+\documentclass[11pt,a4paper,titlepage]{article}
+
 \usepackage{hyperref}
 \usepackage{mathtext}
 \usepackage[T2A]{fontenc}
@@ -14,7 +15,7 @@
 \usepackage{dsfont}
 
 
-\newtheorem*{theorem}{Теорема} 
+\newtheorem*{theorem}{Теорема}
 \newtheorem*{corollary}{Следствие}
 \newtheorem*{definition}{Определение}
 \newtheorem*{n_definition}{Наивное определение}
@@ -53,1085 +54,1171 @@
 
 \begin{document}
 
-\onehalfspacing
+    \onehalfspacing
 
-\maketitle
-\tableofcontents
+    \maketitle
+    \tableofcontents
 
-\section{Понятие множества. Понятие отображения.}
 
-\begin{definition}[Множество]
- Множеством называют неупорядоченное объединение вполне различимых объектов.
-\end{definition}
+    \section{Понятие множества. Понятие отображения.}
 
-\bigskip
+    \begin{definition}[Множество]
+        Множеством называют неупорядоченное объединение вполне различимых объектов.
+    \end{definition}
 
-Способы задания множества:
-\begin{enumerate}
-    \item Перечисление \(\{1, 2\}\)
-    \item Задание свойства \(\{x : P(x)\}\)
-    \item Множество множеств \(\{\Lambda_i\}_{i \in I}\)
-\end{enumerate}
+    \bigskip
 
-\bigskip
-
-Операции над множествами:
-\begin{enumerate}
-    \item \((A \subset B) := \forall x \in A : x \in B \)
-    \item \((A = B) := A \subset B \land B \subset A\)
-    \item \(A \cup B\) - объединение
-    \item \(A \cap B\) - пересечение
-    \item \(A \setminus B\) - разность
-    \item \(\neg A\) - дополнение
-    \item \(A \  \triangle \  B\ = (A \setminus B) \cup (B \setminus A) \) - симметрическая разность
-    \item \(A \times B\) - прямое произведение
-\end{enumerate}
-
-\bigskip
-
-Законы де Моргана:
-\begin{enumerate}
-    \item \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\)
-    \item \(A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)\)
-\end{enumerate}
-
-\bigskip
-
-Дестрибутивность:
-\begin{enumerate}
-    \item \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \)
-    \item \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \)
-\end{enumerate}
-
-\begin{n_definition}[Функция]
-    Функцией $f$ от $A$ в $B$ называют сопоставление $\forall x \in A \to f(x) \in B$
-\end{n_definition}
-
-\begin{notation}
-Для функции $f$ из $A$ в $B$:
-\begin{itemize}
-    \item $A$ - область определения
-    \item $B$ - область прибытия
-    \item $f(A)$ - область значений
-\end{itemize}
-\end{notation}
-
-\begin{definition}[График функции]
- $Г_f = \{(x, f(x)) : x \in A\}$
-\end{definition}
-
-\begin{definition}[Функция]
- Функцией из $A$ в $B$ называют упорядоченную тройку $(A, B, Г)$, где A - область определения, B - область прибытия, Г - график функции.
-\end{definition}
-
-\begin{notation}[Функция] 
-$f: A \to B$ - функция из $A$ в $B$
-\end{notation}
-
-\begin{notation}[Сужение функции]
- $\forall C \subset A:$ сужением $f$ на $C$ называется $f|_C$ т.ч.  $f|_C(x) = f(x)$  и $Г_{f|_C}$ = $Г_f \cap (С \times B) $
-\end{notation}
-
-\begin{notation}[Образ множества]
- $\forall X \subset A: f(X) = \{f(x) : x \in X\}$ - образ множества X
-\end{notation}
-
-\begin{notation}[Прообраз множества]
- $\forall Y \subset B: f^{-1}(Y) = \{x : f(x) \in Y\}$ - прообраз множества Y
-\end{notation}
-
-Отображение $f: A \to B$ называют:
-\begin{itemize}
-    \item Инъективным, если $\forall x_1, x_2 \in X: (f(x_1) = f(x_2)) \implies (x_1 = x_2)$
-    \item Сюръективным, если $f(A) = B$
-    \item Биективным (или взаимно однозначным), если оно сюръективно и инъективно одновременно
-\end{itemize}
-
-\begin{notation}[Композиция функций]
- $\forall (f:A \to B, \  g: B \to C): \exists ((g \circ f) : A \to C )$ - композиция $f$ и $g$ т.ч. $\forall x \in A: (g \circ f)(x) = g(f(x))$
-\end{notation}
-
-\begin{remark}
-Композиция ассоциативна
-\end{remark}
-
-\begin{proof}
-$((h \circ g) \circ f)(x) = (h \circ g)(f(x)) = h(g(f(x))) = h((g \circ f)(x)) = (h \circ (g \circ f))(x)$
-\end{proof}
-
-\begin{definition}[Тождественное отображение]
-$id_A: A \to A$ т.ч. $id(x)=x$ - тождественное отображение    
-\end{definition}
-
-\begin{definition}[Обратный]
-$g: B \to A$ называется правым (левым) обратным к $f: A \to B$, если $f \circ g = id_B$ ($g \circ f = id_A$)
-\end{definition}
-
-\begin{remark}
-Если у отображения есть правый и левый обратные, то они равны.
-\end{remark}
-
-\begin{remark}.
-\begin{enumerate}
-    \item f инъективно $\iff$ f обратимо слева
-    \item f сюръективно $\iff$ f обратимо справа
-    \item f биективно $\iff$ f обратимо
-\end{enumerate}
-\end{remark}
-
-\begin{proof}
-$\forall (f: A \to B)$:\\
-1.  $\bimplies$:\\
-    Обозначим $g$ - левое обратное к $f$ \\
-    $\forall x_1, x_2$ т.ч. $f(x_1) = f(x_2)$: $x_1 = g(f(x_1)) = g(f(x_2)) = x_2$ \\
-1.  $\implies$:\\
-    Выберем $z \in  A$ \\
-    Рассмотрим $g(y) = x$, если $\exists x$ т.ч $f(x)=y$. В противном случае $g(y) = z$ \\
-    $g(f(x)) = x$ (по построению) $\implies$ $g$ - обратное слево.\\
-    \\
-2.  $\bimplies$: \\
-    Обозначим $g$ - правое обратное к $f$ \\
-    $\forall y \in B: \exists g(y)$ т.ч. $f(g(y)) = y$\\
-2.  $\implies$: \\
-    $\forall y \in B: \exists x \in A$ т.ч. $f(x) = y$ \\
-    Пусть $g(y) = x \implies f(g(y)) = y \implies g$ - обратное справа.  
-    
-    
-\end{proof}
-
-\section{Система действительных чисел (аксиоматика).}
-
-\begin{definition}[Множество вещественных чисел]
-Множеством вещественных чисел называют множество удовлетворяющее следующим аксиомам.
-\end{definition}
-
-$\forall a, b, c \in \R$:
-\begin{enumerate}
-    \item (a + b) + c = a + (b + c)
-    \item a + b = b + a
-    \item $\exists 0 \in \R$ т.ч. $a + 0 = a$
-    \item $\exists -a \in R$ т.ч. $a + (-a) = 0$
-    \item (ab)c = a(bc)
-    \item ab = ba
-    \item $\exists 1 \in \R$ т.ч. $a \cdot 1 = a$
-    \item $ a \neq 0 \implies \exists a^{-1} \in R$ т.ч. $aa^{-1} = 1$
-    \item $a \leq a$
-    \item $a \leq b$ или $b \leq a$
-    \item $a \leq b$ и $b \leq a$ $\implies x = y$ 
-    \item $a \leq b$ и $b \leq c$ $\implies a \leq c$
-    \item $a \leq b \implies a+c \leq b+c$
-    \item $0 \leq a,b \implies 0 \leq ab$
-    \item Аксиома полноты: $\forall A, B \subset \R$ т.ч. $A, B \neq \emptyset$ и $(\forall a \in A, b \in B: a \leq b): \exists c \in \R$ т.ч. $\forall a \in A, b \in B: a \leq c \leq b$
-\end{enumerate}
-
-\section{Нижняя и верхняя грани числовых множеств. Лемма о существовании супремума.}
-
-\begin{definition}[Супремум (инфинум)]
-Наименьшая (наибольшая) из верхних (нижних) границ множества называется его супремумом (инфинумом) и обозначается $supA$ ($infA$).
-\end{definition}
-
-\begin{remark} Доопределение супремума (инфинума) \\
-$\forall A$ неогранич. сверху: $supA = +\infty$\\
-$\forall A$ неогранич. снизу: $infA = -\infty$\\
-$sup\emptyset = -\infty$\\
-$inf\emptyset = +\infty$
-\end{remark}
-
-\begin{remark}
-Если у множества есть наибольший (наименьший) элемент, то он единственный.
-\end{remark}
-
-\begin{proof}
-$\forall x_1, x_2 = maxA: \forall x \in A: x \leq x_1, x_2 \implies x_1, x_2 \leq x_1, x_2 \implies x_1 = x_2$
-\end{proof}
-
-\begin{lemma}[Принцип супремума]
-$\forall A \subset \R$ т.ч. $A \neq \emptyset$ и A огранич. сверху: $\exists!supA$
-\end{lemma}
-
-\begin{proof}
-Единственность следует из предыдущего замечания, применённого к множеству верхних границ, а существование из аксиомы полноты, применённой к множеству А и множеству его верхних границ.
-\end{proof}
-
-\begin{remark} Задание супремума неравенствами
-\begin{enumerate}
-    \item $\forall x \in A: x \leq supA$
-    \item $\forall \epsilon > 0: \exists x_0 \in A$ т.ч. $c - \epsilon < x_0$
-\end{enumerate}
-\end{remark}
-
-\section{Предел последовательности. Теорема о единственности предела последовательности.}
-
-\begin{definition}[Последовательность]
-Отображение из $\N$ в $Y \subset \R$ называют числовой последовательностью.
-\end{definition}
-
-\begin{notation}
- $(x_n)_{n=1}^\infty$ - числовая последовательность
-\end{notation}
-
-\begin{notation}[$\epsilon$-окрестность]$\forall \epsilon > 0:$\\
-$\forall x \in \R: U_\epsilon(x) = (x-\epsilon, x+\epsilon)$\\
-$U_\epsilon(+\infty) = (\epsilon, +\infty)$\\
-$U_\epsilon(-\infty) = (-\infty, -\epsilon)$\\
-\end{notation}
-
-\begin{notation}[Предел последовательности]
-Число $a \in \overline \R$ - предел последовательности $(a_n)_{n=1}^\infty$ $\iff$ $\forall \epsilon > 0: \exists N$ т.ч. $\forall n > N: a_n \in U_\epsilon(a)$
-\end{notation}
-
-\begin{theorem}(О единственности предела)
-Если последовательность имеет предел, то он единственный.
-\end{theorem}
-
-\begin{proof} Предположим противное: $\exists a,b = \limn x_n \ т.ч. a \neq b$\\
-Рассмотрим $\epsilon = \frac{b-a}{3}$\\
-По определению предела последовательности: $\exists N$ т.ч. $\forall n > N: x_n \in U_\epsilon(a)$ и $\exists M$ т.ч. $\forall n > M: x_n \in U_\epsilon(b)$. $\implies \exists max(N, M)$ т.ч. $\forall n > max(N, M): x_n \in U_\epsilon(a) \cap U_\epsilon(b) = \emptyset$ ?!!
-\end{proof}
-
-\section{Теорема об ограниченности последовательности, имеющей конечный предел.}
-
-\begin{definition}[Ограниченная последовательность]
-Последовательность $(a)_{n=1}^\infty$ называется ограниченной $\iff \exists c \in \R$ т.ч. $\forall n \in \N: |a_n| < |c|$ 
-\end{definition}
-
-\begin{theorem}(Об ограниченности последовательности, имеющей конечный предел)
-\[\limn a_n \in \R \implies (a)_{n=1}^\infty\ ограничена\]
-\end{theorem}
-
-\begin{proof}
-$\exists \epsilon = 1: \exists N \in \N\ т.ч.\ \forall n > N: a_n \in U_\epsilon(\limn a_n) \implies |a_n| < |\limn a_n + 1| \leq |\limn a_n| + 1 \implies
-    \exists c = max\{|a_1|, |a_2|, ..., |a_N|, |\limn a_n| + 1\}\ т.ч. \forall n \in \N: |a_n| < |c|
-$
-\end{proof}
-
-\section{Бесконечно малые последовательности их свойства.}
-
-\begin{definition}(Бесконечно малая последовательность)
-$(a)_{n=1}^\infty$ - бесконечно малая $\iff \limn a_n = 0$ 
-\end{definition}
-
-\begin{properties} $\forall (a)_{n=1}^\infty$ - бесконечно малая
-\begin{enumerate}
-    \item $\forall(b)_{n=1}^\infty$ - бесконечно малая: $(a_n + b_n)_{n=1}^\infty$ - бесконечно малая
-    \item $\forall(b)_{n=1}^\infty$ - ограниченная: $(a_n b_n)_{n=1}^\infty$ - бесконечно малая
-\end{enumerate}
-\end{properties}
-
-\begin{proof}.\\
-\begin{enumerate}
-    \item $\forall \epsilon > 0: \exists max(N_1, N_2)$ т.ч. $\forall n > max(N_1, N_2): a_n, b_n < \frac{\epsilon}{2} \implies a_n+b_n<\epsilon$
-    \item $\exists c \in \R$ т.ч. $\forall n: |b_n|<c$\\
-        $\forall \epsilon > 0: \exists N$ т.ч. $\forall n > N: |a_n| < \frac{\epsilon}{c} \implies |a_n b_n| < \epsilon$
-\end{enumerate}
-\end{proof}
-
-\section{Теорема об арифметических действиях с пределами последовательностей.}
-
-\begin{theorem}(Об арифметических действиях с пределами последовательностей)
-Если $\limn a_n = a \in R, \limn b_n = b \in R$, то:
-\begin{enumerate}
-    \item $a_n+b_n \to a+b$
-    \item $a_n-b_n \to a-b$
-    \item $a_n b_n \to ab$
-    \item $|a_n| \to |a|$
-    \item $b \neq 0 \implies \frac{a_n}{b_n} \to \frac{a}{b}$
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-$\limn a_n = a \iff \limn (a_n - a) = 0$ т.е. $(a_n - a)_{n=1}^\infty$ - БМП.
-\begin{enumerate}
-    \item $(a_n + b_n - b - a)_{n=1}^\infty$ - БМП $\iff a_n + b_n \to a+b$
-    \item аналогично 1
-    \item $\forall \epsilon > 0: \exists max(N_1, N_2)$ т.ч. $\forall n > max(N_1, N_2):$\\ 
-    $|a_n-a| < min(\sqrt{\epsilon/3},\frac{\epsilon}{3b}), |b_n-b| < min(\sqrt{\epsilon/3},\frac{\epsilon}{3a}) \implies$\\ 
-    $|a_n b_n - ab| = |(a+(a-a_n))(b+(b-b_n))-ab|=|ab+a(b-b_n)+b(a-a_n)+(a-a_n)(b-b_n)-ab|\leq|a(b-b_n)|+|b(a-a_n)|+|(a-a_n)(b-b_n)| < |\frac{\epsilon a}{3a}| + |\frac{\epsilon b}{3b}| + |\sqrt{\epsilon/3}^2| = \epsilon$
-    \item $\forall \epsilon > 0: \exists N$ т.ч. $\forall n > N: |a_n - a| < \epsilon \implies ||a_n|-|a|| < \epsilon$
-    \item НУО: b > 0\\
-    $\exists N_1$ т.ч. $\forall n > N_1: |b_n - b| < b/2 \implies b_n - b > -b/2 \implies b_n > b/2$\\
-    $\forall \epsilon > 0$:\\
-    $\exists N_2$ т.ч. $\forall n > N_2: |b_n - b| < \epsilon b^2/2$\\
-    $\exists N = max\{N_1, N_2\}$ т.ч. $\forall n > N: |\frac{1}{b_n}-\frac{1}{b}|=\frac{|b_n-b|}{b_n b} < \frac{\epsilon b^2/2}{b^2/2}=\epsilon$\\
-    $\implies \frac{1}{b_n} \to \frac{1}{b}$, далее применяем пункт 3
-    
-\end{enumerate}
-\end{proof}
-
-\section{Теорема о предельном переходе в неравенстве.}
-
-\begin{theorem}(О предельном переходе в неравенстве)
-$a_n \to a, b_n \to b:$\\
-$(\exists N$ т.ч. $\forall n > N: a_n \leq b_n) \iff a \leq b$ \\
-Равносильно: $a > b \implies (\exists N$ т.ч. $\forall n > N: a_n > b_n)$
-\end{theorem}
-
-\begin{proof}
-$\implies:$\\
-Предположим противное: $a > b$\\
-$\exists \epsilon = \frac{a-b}{2}$\\
-$\exists N_1: \forall n > N_1: |a_n - a| <
-\epsilon \implies a_n > a - \epsilon $\\
-$\exists N_2: \forall n > N_2: |b_n - b| <
-\epsilon \implies b_n < b + \epsilon $\\
-$\forall n > max(N_1, N_2): b_n<b+\epsilon=b+\frac{a-b}{2}=\frac{a+b}{2}=a-\frac{a-b}{2}=a-\epsilon<a_n$ ?!!
-\end{proof}
-
-\section{Теорема о сжатой последовательности}
-
-\begin{theorem}[О сжатой последовательности]
-\[a_n \leq c_n \leq b_n, a_n \to a, b_n \to a \implies c_n \to a\]
-\end{theorem}
-
-\begin{proof}
-$\forall \epsilon > 0: \exists max(N_1, N_2)$ т.ч. $\forall n > max(N_1, N_2):$\\
-$ a-\epsilon < a_n \leq c_n \leq b_n < a + \epsilon \implies |c_n - a| < \epsilon$
-\end{proof}
-
-\begin{corollary}
-$|b_n| < a_n, a_n \to 0 \implies |b_n| \to 0$
-\end{corollary}
-
-\section{Бесконечно большие последовательности. Теорема об арифметических действиях с бесконечно большими последовательностями.}
-
-\begin{definition}[ББП]
-$(a_n)_{n=1}^\infty$ бесконечно большая $\iff a_n \to \infty, -\infty$ или $+\infty$
-\end{definition}
-
-\begin{theorem}(Об арифметических действиях с бесконечно большими последовательностями)
-\begin{enumerate}
-    \item $x_n \to +\infty, {y_n}$ ограничена снизу $\implies x_n + y_n \to +\infty $
-    \item $x_n \to -\infty, {y_n}$ ограничена сверху $\implies x_n + y_n \to -\infty $
-    \item $x_n \to \infty, {y_n}$ ограничена $\implies x_n + y_n \to \infty $
-    \item $x_n \to \rpm\infty, ((\forall n: y_n \geq b > 0)$ или $y_n \to b > 0$) $\implies x_n y_n \to \rpm\infty$
-    \item $x_n \to \rpm\infty, ((\forall n: y_n \leq b < 0)$ или $y_n \to b < 0$) $\implies x_n y_n \to \rmp\infty$
-    \item $x_n \to \infty, ((\forall n: |y_n| \leq b > 0)$ или $y_n \to b \neq 0$) $\implies x_n y_n \to \infty$
-    \item $x_n \to a \neq 0, y_n \to 0, (\forall n: y_n \neq 0) \implies \frac{x_n}{y_n} \to \infty$
-    \item $x_n \to a \in \R, y_n \to \infty \implies \frac{x_n}{y_n} \to 0$
-    \item $x_n \to \infty, y_n \to b \in \R, (\forall n: y_n \neq 0) \implies \frac{x_n}{y_n} \to \infty$
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}.\\
-\begin{enumerate}
-    \item $\exists c \in \R$ т.ч. $\forall n: y_n > c$\\
-          $\forall \epsilon > 0: \exists N$ т.ч. $\forall n > N: x_n > \epsilon - c \implies x_n + y_n > \epsilon - c + c = \epsilon$
-    \item аналогично (1)
-    \item аналогично (1)
-    \item \begin{itemize}
-        \item $x_n \to +\infty, (\forall n: y_n \geq b > 0):$\\
-              $\forall \epsilon > 0: \exists N$ т.ч. $\forall n > N: x_n > \epsilon/b \implies x_n y_n > \frac{e}{b}b = \epsilon $
-        \item $x_n \to +\infty, y_n \to b > 0:$\\
-              $\exists N_1$ т.ч. $\forall n > N_1: y_n \in U_{b/2}(b) \implies y_n > b/2$\\
-              $\forall \epsilon > 0: \exists N_2$ т.ч. $\forall n > N_2: x_n > 2\epsilon/b$\\
-              $\forall n > max(N_1, N_2): x_n y_n > \frac{2\epsilon}{b}\frac{b}{2} = \epsilon$
-    \end{itemize}
-    \item аналогично (4)
-    \item аналогично (4)
-    \item $\exists N_1: \forall n > N_1: x_n \in U_{a/2}(a) \implies |x_n| > |a|/2$\\
-          $\forall \epsilon > 0$:\\
-          $\exists N_2: \forall n > N_2: |y_n| < |a|/2\epsilon$\\
-          $\forall n > max(N_1,N_2): |\frac{x_n}{y_n}|=\frac{|x_n|}{|y_n|} > \frac{|a/2|}{|a|/2\epsilon} = \epsilon$
-    \item $\forall \epsilon > 0: \exists N = max(N_1, N_2): \forall n > N: |x_n| < 2|a|, |y_n|>2|a|/\epsilon \implies \frac{|x_n|}{|y_n|} < \frac{2|a|}{2|a|/\epsilon} = \epsilon$
-    \item $\forall \epsilon > 0: \exists N = max(N_1, N_2): \forall n > N: |y_n| < 2|b|, |x_n|>2|b|\epsilon \implies \frac{|x_n|}{|y_n|} > \frac{2|b|\epsilon}{2|b|} = \epsilon$
-\end{enumerate}
-\end{proof}
-
-\section{Теорема о пределе монотонной последовательности.}
-
-\begin{theorem}[Теорема о пределе монотонной последовательности]
-Если последовательность $(a_n)_{n=1}^\infty$ монотонна и ограничена, то она имеет предел, причём этот предел равен супремуму, если последовательность не убывает, или инфинуму, если последовательность не возрастает.
-\end{theorem}
-
-\begin{proof}
-Доказательство для неубывающей последовательности.\\
-Последовательность не убывает $\Rightarrow \forall n \in \N$: $a_n \leq a_{n+1}$.\\
-Последовательность ограничена $\Rightarrow \exists S = sup((a_n)_{n=1}^\infty) \in \R $.\\
-Из этого следует, что $\forall \epsilon > 0$ $\exists N(\epsilon): a_N > S - \epsilon$. Последовательность не убывает $\Rightarrow \forall n > N$: $a_n \geq a_N > S-\epsilon$. $S$ - супремум $\Rightarrow S - \epsilon < a_n \leq S$, при $n > N$. $S < S + \epsilon \Rightarrow S-\epsilon < a_n < S+\epsilon \Rightarrow |a_n - S| < \epsilon$, при $n > N(\epsilon)$. Это означает, что $S$ является пределом последовательности $(a_n)_{n=1}^\infty$. Доказательство случая с бесконечно убывающей последовательностью аналогично.
-\end{proof}
-
-\section{Число $e$, как предел последовательности $(1 + \frac{1}{n})^n$, при $n \rightarrow \infty$, $n \in \N$.}
-
-\begin{theorem}%Не уверен, что это именно теорема. Ну и тут какойто кринж происходит в плане оформления. - У меня в конспекте это идёт как "Пример", но, по-моему, это не лучше, чем теорема.
-[Существование и конечность предела последовательности $(1 + \frac{1}{n})^n$, при $n \rightarrow \infty$, $n \in \N$.]
-Предел последовательности $(1 + \frac{1}{n})^n$, при $n \rightarrow \infty$, $n \in \N$ существует и конечен.
-\end{theorem}
-
-\begin{proof}
-
-Рассмотрим $y_n = (1 + \frac{1}{n})^{n+1}$\\
-$\frac{y_{n-1}}{y_n} = \frac{(1 + \frac{1}{n-1})^n}{(1 + \frac{1}{n})^{n+1}}=\frac{(\frac{n}{n-1})^n}{(\frac{n+1}{n})^{n+1}}=\frac{n^{2n+1}}{(n-1)^n (n+1)^{n+1}} = \frac{n^{2n}}{(n^2-1)^n} \frac{n}{n+1} = (\frac{n^2}{n^2-1})^n \frac{n}{n+1} = (1 + \frac{1}{n^2-1})^n \frac{n}{n+1} \geq_{нерав.\ Бернулли} (1+\frac{n}{n^2-1}) \frac{n}{n+1} = \frac{n^2+n-1}{n^2-1} \frac{n}{n+1} = \frac{n^3+n^2-n}{n^3+n^2-n-1} \geq 1$\\$ \implies (y_n)$ убывает, $y_n > 0 \implies_{т.\ о\ пределе\ монот.\ п-ти} \limn y_n \in \R$\\
-
-$\limn y_n = \limn (1 + \frac{1}{n})^{n+1} = \limn ((1 + \frac{1}{n})^n (1 + \frac{1}{n}))$\\$ = \limn (x_n \cdot 1) = \limn x_n$\\
-
-*Неравенство Бернулли: $\forall x > -1: (1+x)^n \geq 1 + nx$
-
-\end{proof}
-
-\section{Подпоследовательности. Простые свойства подпоследовательностей.}
-
-\begin{definition}(Подпоследовательность)\\
-Пусть $(n_k)_{k=1}^\infty$ - строго возрастающая последовательность, $(x_n)_{n=1}^\infty$ - последовательность, тогда $(x_{n_k})_{k=1}^\infty$ - подпоследовательность $(x_n)_{n=1}^\infty$.
-\end{definition}
-
-\begin{remark}
-$\forall k \in \N$: $ n_k \geq k$
-\end{remark}
-
-\begin{properties}(Свойства подпоследовательностей).
-\begin{enumerate}
-
-    \item Если $\limn a_n = a \Rightarrow \forall (n_k)_{k=1}^\infty$ $\lim{k}{\infty}a_{n_k} = a$
-    
-    \item Если $\lim{k}{\infty}a_{n_k} = a$, $\lim{l}{\infty}a_{m_l} = a$ и $\{n_k:k\in\N\}\cup \{m_l:l\in\N\} = \N \Rightarrow \limn a_n = a$.
-    
-\end{enumerate}
-\end{properties}
-
-\begin{proof}.
-\begin{enumerate}
-
-    \item $\forall (n)_{k=1}^\infty$ $\forall \epsilon > 0$ $ \exists N: \forall k > N:$ $x_k \in U_\epsilon(a)$, $n_k \geq k > N \Rightarrow x_{n_k} \in U_\epsilon(a)$
-    
-    \item $\forall \epsilon > 0$ $\exists K(\epsilon)$, $L(\epsilon):\forall n_k > K$ и $m_l > L$ $|a_{n_k} - a| < \epsilon$, $|a_{m_l} - a| < \epsilon \Rightarrow \forall n > max(n_k, m_l)$ $|a_n - a| < \epsilon \Rightarrow \limn a_n = a$ %Вроде это верно,,,,,
-
-\end{enumerate}
-\end{proof}
-
-\section{Лемма о стягивающихся отрезках.}
-
-\begin{definition}(Стягивающиеся отрезки)
-Последовательность $([a_n, b_n])_{n=1}^\infty$ называется стягивающейся, если она вложена $(\forall n \in \N: [a_{n+1}, b_{n+1}] \subset [a_n, b_n])$ и $(b_n - a_n) \to 0$.
-\end{definition}
-
-\begin{lemma}[О стягивающихся отрезках]
-$\forall ([a_n, b_n])_{n=1}^\infty$ - последовательность стягивающихся отрезков: \[\exists!c \in \cap_{n=1}^\infty[a_n, b_n]\]
-\end{lemma}
-
-\begin{proof}
-(?) $\forall n,k \in \N: a_n \leq b_k$\\
-Предположим противное: $\exists n,k \in \N: a_n > b_k \implies a_k \leq b_k < a_n \leq b_n \implies [a_n, b_n] \cap [a_k, b_k] = \emptyset$ (противоречит вложенности)\\
-$\forall a \in (a)_{n=1}^\infty, b \in (b)_{n=1}^\infty: a \leq b \implies_{аксиома\ полноты} \exists c \in \R: \forall n \in \N: a_n \leq c_n \leq b_n \implies c_n \in \cap_{n=1}^\infty[a_n, b_n]$\\
-
-Единственность: $\forall c, d \in \cap_{n=1}^\infty[a_n, b_n]: \forall n \in \N: a_n \leq c, d \leq b_n \implies$\\$ a_n-b_n \leq c-d  \leq b_n-a_n \implies_{т.\ о\ предельном\ переходе\ в\ неравенстве} 0 \leq c-d \leq 0 \implies c=d $
-
-\end{proof}
-
-\section{Принцип выбора Больцано-Вейерштрасса.}
-
-\begin{theorem}[Принцип выбора Больцано-Вейерштрасса]
-Из любой ограниченной последовательности можно выбрать сходящуюся подпоследовательность.
-\end{theorem}
-
-\begin{proof}
-$(x_n)_{n=1}^\infty$ - ограничена $\implies \exists [a_1, b_1]: \forall n \in \N: x_n \in [a_1, b_1]$\\
-Выберем такой $n_1$, что $x_{n_1} \in [a_1, b_1]$\\
-Разобьём $[a_1, b_1]$ пополам и обозначим $[a_2, b_2]$ половину, которая содержит бесконечно много членов последовательности $(x_n)_{n=1}^\infty$.\\
-Выберем такой $n_2 > n_1$, что $x_{n_2} \in [a_2, b_2]$\\
-.\\
-.\\
-.\\
-Разобьём $[a_k, b_k]$ пополам и обозначим $[a_{k+1}, b_{k+1}]$ половину, которая содержит бесконечно много членов последовательности $(x_n)_{n=1}^\infty$.\\
-Выберем такой $n_{k+1} > n_k$, что $x_{n_{k+1}} \in [a_{k+1}, b_{k+1}]$\\
-.\\
-.\\
-.\\
-\bigskip
-
-$([a_n, b_n])_{n=1}^\infty$ - стягивающиеся отрезки (вложенность по построению,\\ $b_n - a_n = \frac{b_1-a_1}{2^{n-1}} \to 0) \implies \exists!c \in \cap_{n=1}^\infty[a_n,b_n]$\\
-$|c - x_{n_k}| \leq b_k - a_k \to 0 \implies_{т.\ о\ сжатой\ последовательности} x_{n_k} \to c$\\
-
-\end{proof}
-
-\begin{remark}
-Из любой неограниченной сверху (снизу) последовательности можно выбрать подпоследовательность, стремящуюся к $+\infty\ (-\infty)$
-\end{remark}
-
-\section{Определение верхнего и нижнего пределов последовательности. Лемма о существовании пределов.}
-
-\begin{definition}[Частичный предел]
-Величина a называется частичным пределом последовательности $(x_n)_{n=1}^\infty$, если $\exists (n_k)_{k=1}^\infty: x_{n_k} \to a$
-\end{definition}
-
-\begin{remark}
-Если последовательность не ограничена сверху (снизу), то пологают $\forall n \in \N: sup\{x_n, x_{n+1}, ...\} = +\infty\ (inf\{x_n, x_{n+1}, ...\} = -\infty)$
-\end{remark}
-
-\begin{definition}[Верхний (нижний) предел]
-$\forall (x_n)_{n=1}^\infty:$\\
-\[\limsupn x_n := \limn (sup \{x_n, x_{n+1}, ...\}) - верхний\ предел\]
-\[\liminfn x_n := \limn (inf \{x_n, x_{n+1}, ...\}) - нижний\ предел\]
-\end{definition}
-
-\begin{lemma}[О существовании верхнего и нижнего пределов]
-$\forall (x_n)_{n=1}^\infty: \exists!\liminfn x_n, \limsupn x_n: \liminfn x_n < \limsupn x_n$
-\end{lemma}
-
-\begin{proof}
-Обозначим $s_n := sup\{x_n, x_{n+1}, ...\}, i_n := inf\{x_n, x_{n+1}, ...\}$\\
-По определению супремума и инфунума: $(s_n)\searrow,\ (i_n)\nearrow, \forall n \in \N: i_1 \leq i_n \leq x_n \leq s_n \leq s_1$\\
-
-\paragraph{Случай 1}($(x_n)$ ограничена)\\
-$(s_n) \searrow, s_n \geq i_1 \in \R \implies_{т.\ о\ пределе\ монотонной\ последовательности} \exists \limn s_n$\\
-Аналогично $\exists \limn i_n$
-\paragraph{Случай 2}($(x_n)$ ограничена снизу, но не сверху)\\
-$\limsupn x_n = +\infty$\\
-Аналогично случаю (1) $\exists \limn i_n$
-\paragraph{Случай 3}($(x_n)$ ограничена сверху, но не снизу) Аналогично случаю (2)
-\paragraph{Случай 4}($(x_n)$ не ограничена ни снизу, ни сверху)\\
-$\limsupn x_n = +\infty$\\
-$\liminfn x_n = -\infty$\\
-\end{proof}
-
-\section{Теорема о верхнем и нижнем пределе подпоследовательности.}
-
-\begin{theorem}[О верхнем и нижнем пределе последовательности]
-Верхний (нижний) предел - наибольший (наименьший) из частичных пределов
-\end{theorem}
-
-\begin{proof}
-\item{Случай 1}($(x_n)$ ограничена)\\
-Обозначим $b = \limsupn x_n$\\
-$s_n \to b \implies \forall \epsilon > 0: \exists N: \forall n \geq N: s_n > b - \epsilon$\\
-$(s_n)\searrow \implies \forall n < N: s_n \geq s_N > b - \epsilon$\\
-Итого: $\forall n \in N: s_n > b - \epsilon$\\
-Построим подпоследовательность $x_{n_k}$ следующим образом:\\
-$z_1 = sup\{x_1, x_2, ...\} > b - 1 \implies$ выберем из $\{x_1, x_2, ...\}$ такой $x_{n_1}$, что $x_{n_1} > b - 1$\\
-$z_{n_1+1} = sup\{x_{n_1+1}, x_{n_1+2}, ...\} > b - 1/2 \implies$ выберем из $\{x_{n_1+1}, x_{n_1+2}, ...\}$ такой $x_{n_2}$, что $x_{n_2} > b - 1/2$\\
-.\\
-.\\
-.\\
-$z_{n_k+1} = sup\{x_{n_k+1}, x_{n_k+2}, ...\} > b - \frac{1}{k+1} \implies$ выберем из $\{x_{n_k+1}, x_{n_k+2}, ...\}$ такой $x_{n_{k+1}}$, что $x_{n_{k+1}} > b - \frac{1}{k+1}$\\
-.\\
-.\\
-.\\
-\bigskip\\
-
-Имеем: $b - 1/k < x_{n_k} \leq z_{n_k} \implies_{т.\ о\ предел\ переходе\ в\ нерав} b \leq \limn x_{n_k} \leq b \implies x_{n_k} \to b \implies b $ - частичный предел последовательности $x_n$\\
-$\forall x_{m_k} \to B: x_{m_k} \leq z_{m_k} \implies_{т.\ о\ предел\ переходе\ в\ нерав} B \leq b \implies b$ - наибольший частичный предел\\
-Аналогично для нижнего предела.\\
-
-\item{Случай 2}($(x_n)$ ограничена сверху, но не снизу)\\
-$\liminfn x_n = -\infty$ очевидно наименьший, по замечанию к принципу выбора можно выбрать $x_{n_k} \to -\infty$\\
-Для верхнего предела аналогично случаю (1)
-
-\item{Случай 3}($(x_n)$ ограничена снизу, но не сверху)\\
-Аналогично случаю (2)
-
-\item{Случай 4}($(x_n)$ не ограничена ни снизу, ни сверху)\\
-$\liminfn x_n = -\infty$ очевидно наименьший, по замечанию к принципу выбора можно выбрать $x_{n_k} \to -\infty$\\
-$\limsupn x_n = +\infty$ очевидно наибольший, по замечанию к принципу выбора можно выбрать $x_{n_k} \to +\infty$\\
-\end{proof}
-
-\begin{corollary}
-$\exists \limn x_n \iff \limsupn x_n = \liminfn x_n$
-\end{corollary}
-
-\begin{proof} $\implies:$ По простому свойству подпоследовательности\\
-$\bimplies:$ По т. о сжатой последовательности $i_n \leq x_n \leq z_n, i_n \to a, z_n \to a \implies x_n \to a$
-\end{proof}
-
-\section{Критерий Коши сходимости последовательности.}
-
-\begin{definition}(Фундаментальная последовательность)
-$(x_n) - $ фундаментальная последовательность $\iff \forall \epsilon > 0: \exists N: \forall n, m > N: |x_n - x_m| < \epsilon$
-\end{definition}
-
-\begin{theorem}[Критерий Коши сходимости последовательности]
-$(x_n)$ - сходится $\iff (x_n)$ - фундаментальна
-\end{theorem}
-
-\begin{proof}.\\
-$\implies:$ Обозначим $a = limn x_n \in \R$\\
-$\forall \epsilon > 0: \exists N: \forall n, m > N: |x_n - a|, |x_m - a| < \epsilon/2 \implies |x_n-x_m|=|x_n-a+a-x_m|\leq|x_n-a|+|a-x_m| < \epsilon$\\
-$\bimplies:$ (?) $(x_n)$ - ограниченная\\
-($\exists \epsilon = 1: \exists N: \forall n > N: |x_{N+1} - x_n| < \epsilon \implies |x_n| < |x_{N+1}| + \epsilon = |x_{N+1}| + 1) \implies (x_n)$ - ограниченная.\\
-По принципу выбора $\exists\ x_{n_k} \to a \in \R$\\
-$\forall \epsilon > 0:$
-\begin{enumerate}
-    \item $\exists K: \forall k \geq K: |x_{n_k}-a| < \epsilon/2$
-    \item $\exists N: \forall n, n_k \geq N: |x_n - x_{n_k}| < \epsilon/2$
-    \item $\forall n \geq max(n_K, N): |x_n - a| = |x_n - x_{n_{max(N, K)}} + x_{n_{max(N, K)}} - a| \leq |x_n - x_{n_{max(N, K)}}| + |x_{n_{max(N, K)}} - a| < \epsilon/2 + \epsilon/2 = \epsilon$
-\end{enumerate}
-$(3) \implies (x_n)$ сходится.
-\end{proof}
-
-\section{Определение числового ряда. Простейшие свойства.}
-
-\begin{definition}[Числовой ряд]
-$a_1 + a_2 + ... = \sum_{k=1}^\infty a_k$, где $\forall n \in \N: a_n \in \R$, называют числовым рядом.\\
-$a_n$ - член ряда\\
-$S_n := a_1 + ... + a_n = \sum_{k=1}^n a_k$ - частичная сумма ряда
-\end{definition}
-
-Если $S_n \to S$, то $S = \sum_{k=1}^\infty a_k$, $S \in R \iff ряд сходится$\\
-
-\begin{properties}[Ряды].\\
-\begin{enumerate}
-    \item $\sum_{n=1}^\infty a_n$ - сходится $\implies \forall c \in \R: \sum_{n=1}^\infty c a_n$ - сходится, причём $c\sum_{n=1}^\infty a_n = \sum_{n=1}^\infty c a_n$ (однородность)
-    \item $\sum_{n=1}^\infty a_n, \sum_{n=1}^\infty b_n$ - сходятся $\implies \sum_{n=1}^\infty(a_n + b_n)$ - сходится, причём $\sum_{n=1}^\infty a_n + \sum_{n=1}^\infty b_n = \sum_{n=1}^\infty (a_n+b_n)$ (адиктивность)
-    \item $\sum_{n=1}^\infty a_n$ - сходится $\implies a_n \to 0$ (необходимое условие сходимости)
-\end{enumerate}
-
-\begin{proof}.\\
-1,2. Тревиально по определению предела, применённому к $(S_n)$\\
-3. Имеем $a := \limn S_n = \sum_{n=1}^\infty a_n \in \R$\\
-$\limn a_n = \limn (S_n - S_{n-1}) = \limn S_n - \limn S_{n-1} = a - a = 0$
-\end{proof}
-\end{properties}
-
-\section{ Остаток ряда. Теорема об остатке.}
-
-\begin{definition}[Остаток ряда]
-Ряд $\sum_{k=m+1}^\infty a_k$ называют остатком ряда $\sum_{k=1}^\infty a_k$ после m-ого члена.
-\end{definition}
-
-\begin{theorem}[Об остатках].\\
-\begin{enumerate}
-    \item $\forall m: \sum_{k=1}^\infty a_k$ - сходится $\iff \sum_{k=m+1}^\infty a_k$ - сходится.
-    \item $\sum_{k=1}^\infty a_k$ - сходится $\iff \lim{m}{\infty}\sum_{k=m+1}^\infty a_k = 0$
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-Обозначим $r_m = \sum_{k=m+1}^\infty a_k$ - остаток
-\begin{enumerate}
-    \item $\forall m: \sum_{k=1}^\infty a_k\ сходится\ \iff S_n \to S \in \R \iff S'_n = S_n - S_m \to (S - S_m) \in \R \iff \sum_{k=m+1}^\infty a_k$ - сходится.
-    \item $\implies:$ $\sum_{k=1}^\infty a_k\ сходится\ \implies S_n \to S \implies r_m = \sum_{k=m+1}^\infty a_k = \sum_{k=1}^\infty a_k - \sum_{k=1}^m a_k = S - S_m \to S - S = 0$\\
-    $\bimplies:$ $\exists (r_m)_{m=1}^\infty, r_m \in R \implies$ ряд сходится по пункту (1.$\bimplies$)
-\end{enumerate}
-\end{proof}
-
-\section{Положительный ряд. Основная теорема для положительных рядов.}
-
-\begin{definition}[Положительный ряд]
-Ряд $\sum_{k=1}^\infty a_k$ называется положительным, если $\forall k \in \N: a_k \geq 0$
-\end{definition}
-
-\begin{theorem}[Основное свойство положительного ряда] 
-Положительный ряд сходится $\iff (S_n)_{n=1}^\infty$ ограничена сверху.
-\end{theorem}
-
-\begin{proof}
-$S_{n+1} = (a_1 + ... + a_n) + a_{n+1} = S_n + a_{n+1} \geq S_n \implies (S_n)\nearrow, (S_n)_{n=1}^\infty$ ограничена сверху (дано) $\implies_{т.\ о\ предел\ монот\ послед} (S_n)$ сходится
-\end{proof}
-
-\section{Признак сравнения положительных рядов. Следствие.}
-
-\begin{theorem}[Признак сравнения положительных рядов]
-$\forall A = \sum_{k=1}^\infty a_k, B = \sum_{k=1}^\infty b_k$ - положительные ряды т.ч. $(\exists N: \forall n \geq N: a_n \leq b_n):$\\
-\begin{enumerate}
-    \item $A\ сходится\ \implies B\ сходится$
-    \item $A\ расходится\ \implies B\ расходится$
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}.\\
-\begin{enumerate}
-    \item Если $N = 1$, то $\forall n \in N: a_n \leq b_n$\\
-        Обозначим $A_n = \sum_{k=1}^n a_k, B_n = \sum_{k=1}^n b_k \implies \forall n \in \N: A_n \leq B_n$\\
-        $(B_n)\ сходится\ \implies B\ ограничена\ сверху\ \implies (A_n)\ ограничена\ сверху\ \implies A$ сходится по основному свойству положительных рядов\\
-        Если N > 1, то можно свести задачу к случаю N = 1, перейдя к N-ым остаткам и обратно.
-    \item Другая форма записи (1), т.к. $(a \implies b) \iff (\lnot a \bimplies \lnot b)$
-\end{enumerate}
-\end{proof}
-
-\begin{corollary}
-$\forall A = \sum_{k=1}^\infty a_k, B = \sum_{k=1}^\infty b_k$ - положительные ряды т.ч. $\frac{a_k}{b_k}\to p \in [0, +\infty], \forall k \in \N: b_k > 0$:
-\begin{enumerate}
-    \item $p < +\infty \implies (B\ сходится\ \implies A\ сходится)$
-    \item $p > 0 \implies (B\ расходится\ \implies A\ расходится)$
-    \item $p \in (0,+\infty) \implies (B\ сходится\ \iff A\ сходится)$
-\end{enumerate}
-\end{corollary}
-
-\begin{proof}.\\
-\begin{enumerate}
-    \item $\exists \epsilon = 1: \exists N: \forall n > N: \frac{a_n}{b_n} < p + 1 \implies a_n < b_n (p+1)$\\
-    B сходится $\implies_{св-во\ рядов} \sum_{k=1}^\infty(p+1)b_k\ сходится\ \implies_{признак\ сравнения} A$ сходится
-    \item Если $p \in (0, +\infty)$, то $\exists \epsilon \in (0, p): \exists N: \forall n > N: \frac{a_n}{b_n} > p - \epsilon \implies a_n > (p - \epsilon)b_n \implies (B\ расходится\ \implies А$ расходится (аналогично 1))\\
-    Если $p = +\infty$, то $\exists \epsilon = 1: \exists N: \forall n > N: \frac{a_n}{b_n} > 1 \implies a_n > b_n \implies (B\ расходится\ \implies А$ расходится (по признаку сравнения))
-\end{enumerate}
-\end{proof}
-
-\section{Критерий Коши сходимости числового ряда.}
-
-\begin{theorem}[Критерий Коши сходимости ряда]
-Ряд $\sum_{k=1}^\infty a_k$ сходится $\iff \forall \epsilon > 0: \exists N: \forall n > N: \forall p \in \N: |\sum_{k=n+1}^{n+p} a_k| < \epsilon$
-\end{theorem}
-
-\begin{proof}
-$(\forall \epsilon > 0: \exists N: \forall n > N: \forall p \in \N: |\sum_{k=n+1}^{n+p} a_k| = |\sum_{k=1}^{n+p} a_k - \sum_{k=1}^{n} a_k| = |S_{n+p} - S_n| < \epsilon) \implies (S_n)_{n=1}^\infty - фундаментальная \implies (S_n) - сходится$
-\end{proof}
-
-\section{Предельная точка множества. Два определения предела функции: по Коши (на языке окрестностей), по Гейне (на языке
-последовательностей). Односторонние пределы функции. Верхний и нижний пределы функции. Теорема о единственности
-предела функции.}
-
-\begin{notation}
-$\overline{\R} = \R \cup \{-\infty, +\infty\}$\\
-$\forall \epsilon > 0: \forall x \in \overline{\R}:$\\
-$\U_\epsilon(x) = U_\epsilon(x) \setminus \{x\}$ - проколотая окрестность\\
-$\U_{+\epsilon} = (a, a + \epsilon)$ - правая полуокрестность\\
-$\U_{-\epsilon} = (a - \epsilon, a)$ - левая полуокрестность
-\end{notation}
-
-\begin{definition}[Предельная точка]
-Точка $a \in \overline{\R}$ называется предельной точкой множества $D \subset \R$, если $\forall \epsilon > 0: \exists b \in D \cap \U_\epsilon(a)$
-\end{definition}
-
-\begin{definition}[Предел функции по Коши (на языке окрестностей)]
-$D \subset \R, a$ - предельная точка D.\\
-Величину $b \in \overline{\R}$ называют пределом функции $f: D \to \R$, если\\
-$\forall \epsilon > 0: \exists \delta > 0: \forall x \in \U_\delta(a) \cap D: f(x) \in U_\epsilon$
-\end{definition}
-
-\begin{definition}[Односторонний предел функции]
-$D \subset \R, a$ - предельная точка D.\\
-Величину $b \in \overline{\R}$ называют пределом функции $f: D \to \R$ справа (слева), если\\
-$\forall \epsilon > 0: \exists \delta > 0: \forall x \in \U_{\delta\rpm0}(a) \cap D: f(x) \in U_\epsilon$
-\end{definition}
-
-\begin{definition}[Предел функции  по Гейне (на языке последовательностей)]
-$D \subset \R, a$ - предельная точка D.\\
-Величину $b \in \overline{\R}$ называют пределом функции $f: D \to \R$, если\\
-$\forall (x_n)_{n=1}^\infty$ т.ч. $x_n \to a, x_n \in D, x_n \neq a: f(x_n) \to b$
-\end{definition}
-
-\begin{definition}[Частичный предел функции]
-$D \subset \R, a$ - предельная точка D.\\
-Величину $b \in \overline{\R}$ называют пределом функции $f: D \to \R$, если\\
-$\exists (x_n)_{n=1}^\infty$ т.ч. $x_n \to a, x_n \in D, x_n \neq a: f(x_n) \to b$
-\end{definition}
-
-\begin{definition}[Верхний (нижний) предел функции]
-Наибольший (наименьший) частичный предел функции называют верхним (нижним) пределом функции.
-\end{definition}
-
-\begin{theorem}[О единственности предела функции]
-Если у функции есть предел, то он единственный
-\end{theorem}
-
-\begin{proof}
-$\forall b, c = \lim{x}{a}f(x):$\\
-$\forall (x_n)_{n=1}^\infty x_n\to a, x_n\in D, x_n \neq a: f(x_n) \to b, f(x_n) \to c \implies b = c$ (по т. о единственности предела последовательности)
-\end{proof}
-
-\section{Доказательство равносильности двух определений предела функции}
-\begin{theorem}[Эквивалентность определений предела функции]
-Определения предела по Коши и по Гейну эквивалентны
-\end{theorem}
-
-\begin{proof}.\\
-$К\impliesГ: \lim{x}{a}f(x) =_К b$\\
-$\forall \epsilon > 0: \exists \delta > 0$ т.ч $(x \in \U_\delta(a) \cap D \implies f(x) \in U_\epsilon(b))$\\
-$\forall (x_n)_{n=1}^\infty$ т.ч. $x_n \to a, x_n \in D, x_n \neq a: (\exists N: \forall n > N: x_n \in \U_\delta(a) \implies f(x_n) \in U_\epsilon(b)) \implies f(x_n) \to b \implies \lim{x}{a}f(x) =_Г b$\\
-\\
-$(Г \implies К) \iff (\lnotК \implies \lnotГ)$\\
-$\lnotК \implies \lnotГ: \lim{x}{a}f(x) \neq_К b$\\
-$\exists \epsilon > 0: \forall \delta = \frac{1}{n}, n \in \N: \exists x_n \in \U_\delta(a) \cap D: f(x_n) \notin U_\epsilon(b)$\\
-1. $x_n \in \U_{1/n}(a) \cap D \implies x_n \to a, x_n \in D, x_n \neq a$\\
-2. $f(x_n) \notin U_\epsilon(b) \implies f(x_n) \not\to b$\\
-$(1), (2) \implies \lim{x}{a}f(x) \neq_Г b$
-\end{proof}
-
-\section{Теорема о локальной ограниченности функции, имеющей предел. Теорема о стабилизации знака функции, имеющей
-предел.}
-
-\begin{theorem}[О стабилизации знака функции, имеющей
-предел]
-\[\forall (f: D \to \R), \lim{x}{a}f(x) = b \in \overline{\R}\setminus\{0\}: \exists \U(a): \exists M \in \R: \forall x \in \U(a) \cap D: sign(f(x)) = sign(b)\]
-\end{theorem}
-
-\begin{proof}
-Н.У.О. b > 0\\
-Предположим противное: $\forall \U_{1/n}(a): \exists x_n \in \U_{1/n}(a) \cap D: f(x_n) < 0$\\$ \implies_{переход\ неравенства\ в\ пределы} f(x_n) \to_Г b \leq 0$ ?!!
-\end{proof}
-
-\begin{theorem}[О локальной ограниченности функции, имеющей предел]
-\[\forall (f: D \to \R), \lim{x}{a}f(x) = b \in \R: \exists \U(a): \exists M \in \R: \forall x \in \U(a) \cap D: |f(x)| < M\]
-\end{theorem}
-
-\begin{proof}
-$\exists \epsilon = 1: \exists \delta > 0: \forall x \in \U_\delta(a): |x-b| < \epsilon = 1 \implies |x| < |b| + 1$
-\end{proof}
-
-\section{Бесконечно малые и бесконечно большие функции, связь между ними. Теорема об арифметических действиях над функциями, имеющими предел. Теорема о пределе композиции.} TODO
-
-\section{Теоремы о предельном переходе в неравенстве для функций. Теорема о сжатой функции.} TODO
-
-\section{Теорема о пределе монотонной функции.}
-
-\begin{theorem}[О пределе монотонной функции]
-$\forall (f: D \to \R)$, a - предельная точка D:\\
-\begin{enumerate}
-    \item $D_1 = D \cap (-\infty, a) \neq \emptyset:$\\
+    Способы задания множества:
     \begin{enumerate}
-        \item $f\nearrow\ на\ D_1 \implies f(a-0)=\sup{x\in D_1}f(x)$
-        \item $f\searrow\ на\ D_1 \implies f(a-0)=\inf{x\in D_1}f(x)$
+        \item Перечисление \(\{1, 2\}\)
+        \item Задание свойства \(\{x : P(x)\}\)
+        \item Множество множеств \(\{\Lambda_i\}_{i \in I}\)
     \end{enumerate}
-    \item $D_2 = D \cap (a, +\infty) \neq \emptyset:$\\
+
+    \bigskip
+
+    Операции над множествами:
     \begin{enumerate}
-        \item $f\nearrow\ на\ D_2 \implies f(a+0)=\inf{x\in D_2}f(x)$
-        \item $f\searrow\ на\ D_2 \implies f(a+0)=\sup{x\in D_2}f(x)$
+        \item \((A \subset B) := \forall x \in A : x \in B \)
+        \item \((A = B) := A \subset B \land B \subset A\)
+        \item \(A \cup B\) - объединение
+        \item \(A \cap B\) - пересечение
+        \item \(A \setminus B\) - разность
+        \item \(\neg A\) - дополнение
+        \item \(A \  \triangle \  B\ = (A \setminus B) \cup (B \setminus A) \) - симметрическая разность
+        \item \(A \times B\) - прямое произведение
     \end{enumerate}
-\end{enumerate}
-\end{theorem}
 
-\begin{proof}.\\
-1.(а): Обозначим $b := \sup{x\in D_1}f(x)$\\
-По определению супремума: $\forall \epsilon > 0: \exists x_0\in D_1: f(x_0) > b - \epsilon$\\
-$f\nearrow \implies \forall x \in (x_0, a): f(x_0) \geq f(x_0) > b - \epsilon$\\
-Т.е. $\exists \delta = a - x_0: \forall x \in \U_\delta(a-0): f(x) \in U_\epsilon(b) \implies f(a-0) =_К b$\\
-Остальные пункты доказываются аналогично.
-\end{proof}
+    \bigskip
 
-\section{Критерий Коши существования предела функций.}
+    Законы де Моргана:
+    \begin{enumerate}
+        \item \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\)
+        \item \(A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)\)
+    \end{enumerate}
 
-\begin{theorem}[Критерий Коши существования предела функции]
-\[\forall (f: D \to \R), a\ -\ предельная\ точка\ D:\]
-\[\lim{x}{a} f(x) \in \R \iff \forall \epsilon > 0: \exists \delta > 0: \forall x_1, x_2 \in \U_\delta(a) \cap D: |f(x_1) - f(x_2)| < \epsilon\]
-\end{theorem}
+    \bigskip
 
-\begin{proof}.\\
-$\implies:$ Обозначим $b := \lim{x}{a}f(x)$\\
-По определению предела функции по Коши: $\forall \epsilon > 0: \exists \delta > 0: \forall x_1, x_2 \in \U_\delta(a): |f(x_1) - b|, |f(x_2) - b| < \epsilon/2 \implies |f(x_1) - f(x_2)| < \epsilon$\\\\
-$\bimplies: \forall \epsilon > 0: \exists \delta > 0: (x_1, x_2 \in \U_\delta(a) \cap D \implies |f(x_1) - f(x_2)| < \epsilon)$\\
-$\forall (x_n)_{n=1}^\infty, x_n \to a, x_n \in D, x_n \neq a: \exists N: \forall n, m > N: x_n, x_m \in \U_\delta(a) \implies |f(x_n) - f(x_m)| < \epsilon$\\
-По критерию Коши сходимости последовательности: $\exists b := \limn f(x_n) \in R$\\
-По определению предела функции по Гейну$^*: \lim{x}{a}f(x) = b$\\\\
+    Дестрибутивность:
+    \begin{enumerate}
+        \item \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \)
+        \item \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \)
+    \end{enumerate}
 
-$^*$ Здесь используется следующий факт:\\ 
-$(\forall (x_n)_{n=1}^\infty, x_n \to a, x_n \in D, x_n \neq a:
-  \exists b = \limn f(x_n)) \implies$ все эти b равны.\\\\
-Для любых таких $(x_n)_{n=1}^\infty$ и $(x'_n)_{n=1}^\infty$ равенство $\limn f(x_n)$ и $\limn f(x'_n)$ доказывается построением $(z_n)_{n=1}^\infty = \{x_1, x'_1, x_2, x'_2, ...\}$, стремящейся по условию к $b = \limn f(x_n)$, и замечанием того, что $f(x_n)$ и $f(x'_n)$ стремятся к b, как подпоследовательности.
-\end{proof}
+    \begin{n_definition}[Функция]
+        Функцией $f$ от $A$ в $B$ называют сопоставление $\forall x \in A \to f(x) \in B$
+    \end{n_definition}
 
-\section{Определение непрерывности функции в точке, на множестве. Односторонняя непрерывность. Изолированные точки множества. Точки разрыва функции и их классификация.}
-
-\begin{definition}[Непрерывность функции в точке, на множестве].\\
-$\forall (f: D \to \R)$:
-\begin{enumerate}
-    \item f непрерывна в точке $a \in D \iff a\ -\ изолированная\ точка\ или\ f(a) = \lim{x}{a}f(x)$
-    \item f непрерывна на $A \subset D \iff \forall a\in A:$ f непрерывна в точке a
-\end{enumerate}
-\end{definition}
-
-\begin{remark}По Коши:\\
-f непрерывна в $a \in D \iff \forall \epsilon > 0: \exists \delta > 0: \forall x \in U_\delta(a) \cap D: f(x) \in U_\epsilon(f(x))$
-\end{remark}
-
-\begin{remark}По Гейну:\\
-f непрерывна в $a \in D \iff \forall (x_n)_{n=1}^\infty, x_n \to a, x_n \in D: f(x_n) \to f(a)$
-\end{remark}
-
-\begin{remark}
-Если f непрерывна в $a \in D$, то $\lim{x}{a}f(x) = f(\lim{x}{a}x)$
-\end{remark}
-
-\begin{remark}.\\
-$\Delta x = x - a$ - приращение аргумента\\
-$\Delta f(x) = f(x) - f(a)$ - приращение функции\\
-f непрерывна в $a \in D \iff \lim{x}{0}\Delta f(x) = 0$
-\end{remark}
-
-\begin{definition}[Односторонняя непрерывность].\\
-f непрерывна в точке $a \in D$ справа $\iff f(a+0) = f(a)$\\
-f непрерывна в точке $a \in D$ слева $\iff f(a-0) = f(a)$\\
-\end{definition}
-
-\begin{definition}[Точки разрыва функции и их классификация].\\
-\begin{enumerate}
-    \item Если $f(a+0), f(a-0), f(a)$ существуют и конечны и при этом не все равны друг другу, то f имеет разрыв первого рода в точке a, при этом:
-\begin{itemize}
-    \item Разрыв устранимый $\iff f(a+0) = f(a-0)$
-    \item $f(a+0) - f(a-0)$ - скачок f в точке a
-\end{itemize}
-\item Если хотя бы одна из величин $f(a+0), f(a-0), f(a)$ бесконечна или не существуют, то f имеет разрыв второго рода в точке a.
-\end{enumerate}
-\end{definition}
-
-\section{Теорема о стабилизации знака непрерывной функции. Теорема об арифметических действиях над непрерывными функциями. Теорема о непрерывности композиции.}
-
-\begin{theorem}[Локальные свойства непрерывной функции].\\
-\begin{enumerate}
-    \item Арифметические действия (по теореме об арифметических действиях с пределами)\\
-        $\forall (f: D \to \R), (g: D \to \R)$, f и g непрерывны в точке $a \in D$:
+    \begin{notation}
+        Для функции $f$ из $A$ в $B$:
         \begin{itemize}
-            \item $f + g, f \cdot g, |f|$ непрерывны в точке a
-            \item $g(a) \neq 0 \implies \frac{f}{g}$ непрерывна в точке a
+            \item $A$ - область определения
+            \item $B$ - область прибытия
+            \item $f(A)$ - область значений
         \end{itemize}
-    \item Стабилизация знака (по теореме о стабилизации знака функции, имеющей предел)\\
-        $\forall (f: D \to \R)$, f непрерывна в точке $a \in D, f(a) \neq 0:$\\
-        $\exists U(a): \forall x \in U(a) \cap D: sign(f(x)) = sign(f(a))$
-    \item Непрерывность композиции (по замечанию о пределе непрерывной функции)\\
-        $\forall (f: D \to E), (g: E \to \R)$, f непрерывна в точке $a \in D$, g непрерывна в точке $f(a)$: $g \circ f$ непрерывна в точке a
-\end{enumerate}
-\end{theorem}
+    \end{notation}
 
-\begin{proof}.\\
-3. $\forall \epsilon > 0: \exists \delta > 0: \exists \partial > 0: \forall x \in U_\partial(a): f(x) \in U_\delta(f(a)): g(f(x)) \in U_\epsilon(g(f(a))) \implies \lim{x}{a}\ g(f(x)) =_К g(f(x))$
-\end{proof}
+    \begin{definition}[График функции]
+        $Г_f = \{(x, f(x)) : x \in A\}$
+    \end{definition}
 
-\section{Теорема Больцано-Коши о нуле непрерывной функции.}
+    \begin{definition}[Функция]
+        Функцией из $A$ в $B$ называют упорядоченную тройку $(A, B, Г)$, где A - область определения, B - область прибытия, Г - график функции.
+    \end{definition}
 
-\begin{theorem}[Больцано-Коши о нуле непрерывной функции]
-\[\forall f\ непрерывной\ на\ [a, b], f(a)\cdot f(b) < 0: \exists c \in (a, b): f(c) = 0\]
-\end{theorem}
+    \begin{notation}[Функция]
+        $f: A \to B$ - функция из $A$ в $B$
+    \end{notation}
 
-\begin{proof}.\\
-\begin{enumerate}
-    \item Разделим [a, b] пополам.\\
-        Если $f(\frac{a+b}{2}) = 0$, то теорема доказана.\\
-        Иначе обозначим $[a_1, b_1]$ половину [a, b] т.ч. $f(a_1)f(b_1) < 0$\\
-    \item Если предыдущий шаг можно повторить лишь конечное число раз, не доказав теорему, то теорема может быть доказана за конечное число таких шагов.\\
-        Иначе $\exists([a_n, b_n])_{n=1}^\infty$ - последовательность стягивающихся отрезков (по построению) $\implies \exists! c \in \cap_{n=1}^\infty[a_n, b_n]$, причём $a_n \to c, b_n \to c$ 
-    \item f непрерывна в c $\implies \lim{x}{c} f(x) = f(c)$\\
-    $ \implies_Г f(a_n) \to f(c), f(b_n) \to f(c)$\\
-    $ \implies min(f(a_n), f(b_n)) \to f(c), max(f(a_n), f(b_n)) \to f(c)$
-    \item $\forall n \in \N: min(f(a_n), f(b_n)) < 0 < max(f(a_n), f(b_n)) \implies_{т\ о\ перех\ нерав\ в\ пределы} f(c) \leq 0 \leq f(c) \implies f(c) = 0$
-\end{enumerate}
-\end{proof}
+    \begin{notation}[Сужение функции]
+        $\forall C \subset A:$ сужением $f$ на $C$ называется $f|_C$ т.ч.  $f|_C(x) = f(x)$  и $Г_{f|_C}$ = $Г_f \cap (С \times B) $
+    \end{notation}
 
-\section{Теорема Больцано-Коши о промежуточном значении непрерывной функции.}
+    \begin{notation}[Образ множества]
+        $\forall X \subset A: f(X) = \{f(x) : x \in X\}$ - образ множества X
+    \end{notation}
 
-\begin{theorem}[Больцано-Коши о промежуточном значении непрерывной функции]
-\[\forall f\ непрерывной\ на\ [a, b], y \in ((min(f(a), f(b)), max(f(a), f(b)): \exists c \in (a, b): f(c) = y\]
-\end{theorem}
+    \begin{notation}[Прообраз множества]
+        $\forall Y \subset B: f^{-1}(Y) = \{x : f(x) \in Y\}$ - прообраз множества Y
+    \end{notation}
 
-\begin{proof}.\\
-Обозначим $g(x) = f(x) - y \implies g(x)$ непрерывна на [a, b] по теореме об арифметических действиях над непрерывными функциями\\
-$min(g(a), g(b)) < 0 < max(g(a), g(b)) \implies g(a)g(b) < 0 \implies_{т\ о\ нуле\ непрерыв\ функции} \exists c \in (a, b): g(c) = 0 \implies f(c) = y$
-\end{proof}
+    Отображение $f: A \to B$ называют:
+    \begin{itemize}
+        \item Инъективным, если $\forall x_1, x_2 \in X: (f(x_1) = f(x_2)) \implies (x_1 = x_2)$
+        \item Сюръективным, если $f(A) = B$
+        \item Биективным (или взаимно однозначным), если оно сюръективно и инъективно одновременно
+    \end{itemize}
 
-\section{Лемма о характеристике промежутка и следствие о сохранении промежутка}
+    \begin{notation}[Композиция функций]
+        $\forall (f:A \to B, \  g: B \to C): \exists ((g \circ f) : A \to C )$ - композиция $f$ и $g$ т.ч. $\forall x \in A: (g \circ f)(x) = g(f(x))$
+    \end{notation}
 
-\begin{lemma}[Характеристика промежутка]
-\[E \subset \R - промежуток \iff \forall x, y \in E: [x,y]\subset E\]
-\end{lemma}
+    \begin{remark}
+        Композиция ассоциативна
+    \end{remark}
 
-\begin{proof}
-$\implies:$ очевидно\\
-$\bimplies:$ Обозначим $m := infE, M := supE$\\
-(?) $(m, M) \subset E$\\
-$\forall z \in (m, M):$\\
-$\exists \epsilon_m = z - m > 0: \exists x \in E: x < m + (z-m) = z$ (по определению inf)\\
-$\exists \epsilon_M = M - z > 0: \exists y \in E: y > M - (M-z) = z$ (по определению sup)\\
-$x,y \in E \implies_{по\ усл} [x,y] \subset E \implies z \in E$\\
-Поэтому $(m, M) \subset E \implies E = \interval{m,M}$
-\end{proof}
+    \begin{proof}
+        $((h \circ g) \circ f)(x) = (h \circ g)(f(x)) = h(g(f(x))) = h((g \circ f)(x)) = (h \circ (g \circ f))(x)$
+    \end{proof}
 
-\begin{corollary}(О сохранении промежутка)
-\[\forall f\ непрерывной\ на\ \interval{a,b}: f(\interval{a,b}) - промежуток\]
-\end{corollary}
+    \begin{definition}[Тождественное отображение]
+        $id_A: A \to A$ т.ч. $id(x)=x$ - тождественное отображение
+    \end{definition}
 
-\begin{proof}.\\
-$\forall c, d \in f(\interval{a,b}), c < d: [c, d] \subset f(\interval{a,b})$ (по т. о промежуточном значении) $\implies f(\interval{a,b})$ - промежуток\\
-$f(\interval{a,b} = \interval{\inf{x\in\interval{a,b}}f(x),\sup{x\in\interval{a,b}}f(x)}$
-\end{proof}
+    \begin{definition}[Обратный]
+        $g: B \to A$ называется правым (левым) обратным к $f: A \to B$, если $f \circ g = id_B$ ($g \circ f = id_A$)
+    \end{definition}
 
-\section{Первая теорема Вейерштрасса о непрерывных функциях.}
+    \begin{remark}
+        Если у отображения есть правый и левый обратные, то они равны.
+    \end{remark}
 
-\begin{theorem}[Первая теорема Вейерштрасса о непрерывных функциях]
-\[\forall f\ непрерывной\ на\ [a, b]: f\ ограничена\ на\ [a,b]\]
-\end{theorem}
-\begin{proof}.\\
-Предположим противное: $\exists \sequencen{x}, x_n \in [a, b], f(x_n) \to \infty$\\
-По прицепу выбора: $\exists x_{n_k} сходящаяся$\\
-Обозначим $x_0 := \limn x_{n_k} \in [a,b]$\\
-f непрерывна в $x_0 \implies \lim{x}{x_0}f(x) = f(x_0) \in \R$, но $f(x_n) \to \infty\ ?!!_Г$
-\end{proof}
+    \begin{remark}
+        .
+        \begin{enumerate}
+            \item f инъективно $\iff$ f обратимо слева
+            \item f сюръективно $\iff$ f обратимо справа
+            \item f биективно $\iff$ f обратимо
+        \end{enumerate}
+    \end{remark}
 
-\section{Вторая теорема Вейерштрасса о непрерывных функциях. Следствие о сохранении отрезка.}
-
-\begin{theorem}[Вторая теорема Вейерштрасса о непрерывных функциях]
-\[\forall f\ непрерывной\ на\ [a,b]: \exists x_m, x_M \in [a,b], f(x_m) = \inf{x\in[a,b]}f(x), f(x_M) = \sup{x\in[a,b]}f(x)\]
-\end{theorem}
-
-\begin{proof}.\\
-Доказательство существования $x_M$, для $x_m$ аналогично\\
-По первой теореме Вейерштрасса: $\exists M = \inf{x\in[a,b]}f(x) \in \R$\\
-Предположим противное: $\forall x \in [a,b]: f(x) < M$\\
-Рассмотрим $g(x) = \frac{1}{M-f(x)}$\\
-$g(x)$ непрерывна на $[a,b]$ по теореме об арифметических действиях над непрерывными функциями, т.к. $\forall x \in [a,b]: f(x) < M$\\
-По определению супремума: $\forall \epsilon = \frac{1}{n}, n\in\N: \exists x_n \in [a,b]: x_n > M - \frac{1}{n}$\\
-$x_n \to M \implies g(x_n) \to \infty$, но по первой теореме Вейерштрасса g ограниченная ?!!
-
-Ещё можно доказать аналогично теореме о нуле непрерывной функции (билет 33), если воспользоваться фактом: $sup(A \cup B) = max(sup(A), sup(B))$
-\end{proof}
-
-\section{Теорема о разрывах и непрерывности монотонной функции}
-
-\begin{theorem}[О разрывах и непрерывности монотонной функции].\\
-$\forall\ монотонная\ f: \interval{a,b}\to\R$:
-\begin{enumerate}
-    \item f не имеет разрывов второго рода
-    \item f непрерывна $\iff \forall c,d: f(\interval{c,d})$ - промежуток
-\end{enumerate}
-\end{theorem}
-
-\begin{proof} TODO проверить\\
-НУО: $f\nearrow$
-\begin{enumerate}
-    \item По теореме о пределе монотонной функции $\forall x_0 \in (a,b):$\\
-    $f(x_0-0) = \sup{x\in\langle a,x_0)}f(x) \in [f(\frac{a+x_0}{2}), f(x_0)] \subset \R$\\
-    $f(x_0+0) = \inf{x\in(x_0,b\rangle}f(x) \in [x_0, f(\frac{b+x_0}{2})] \subset \R$\\
-    Поэтому $f$ не терпит разрыв второго рода в точке $x_0$
-    \item $\implies:$ уже доказано\\
-    $\bimplies:$ Предположим противное: $f$ терпит разрыв в точке $x_0 \in (a, b)$\\
-    НУО: $f(x_0) \neq f(x_0 + 0)$ (1)\\
-    $f(x_0) \leq \inf{x\in(x_0,b\rangle}f(x) = f(x_0 + 0)$ (2)\\
-    $(1), (2) \implies f(x_0) < f(x_0 + 0)$\\\\
-    $\frac{f(x_0)+f(x_0+0)}{2} \in [f(x_0), f(x_0 + 0)] = [f(x_0), \inf{x\in(x_0,b\rangle}f(x)] \subset [f(x_0), f(\frac{x_0+b}{2})] \subset f([x_0, \frac{x_0+b}{2}]) \implies \exists x_1 \in [x_0, \frac{x_0+b}{2}]: f(x_1) = \frac{f(x_0)+f(x_0+0)}{2}$\\\\
-    Но $f(x_0) < \frac{f(x_0)+f(x_0+0)}{2}$, а $\forall x \in (x_0, \frac{x_0+b}{2}]: f(x) \geq \inf{x'\in(x_0,b\rangle}f(x') = f(x_0 + 0) > \frac{f(x_0)+f(x_0+0)}{2}$ ?!!
-    
-\end{enumerate}
-\end{proof}
-
-\section{Теорема о существовании и непрерывности обратной функции.}
-
-\begin{theorem}[О существовании и непрерывности обратной функции]
-\[\forall (f: \interval{a,b}\to\R), f\ строго\ монотонная, непрерывная, m=\inf{x\in\interval{a,b}}f(x), M=\sup{x\in\interval{a,b}}f(x):\]
-\begin{enumerate}
-    \item $\exists f^{-1}: \interval{m, M} \to \interval{a,b}$
-    \item $f^{-1}$ монотонная и имеет тот же характер, что и $f$
-    \item $f^{-1}$ непрерывная
-\end{enumerate}
-\end{theorem}
-
-\begin{proof}
-\begin{enumerate}
-    \item $f$ строго монотонная $\implies f$ - инъекция\\
-        $f$ TODO
-\end{enumerate}
-\end{proof}
-
-TODO Билеты 27, 28, проверить 38
+    \begin{proof}
+        $\forall (f: A \to B)$:\\
+        1.  $\bimplies$:\\
+        Обозначим $g$ - левое обратное к $f$ \\
+        $\forall x_1, x_2$ т.ч. $f(x_1) = f(x_2)$: $x_1 = g(f(x_1)) = g(f(x_2)) = x_2$ \\
+        1.  $\implies$:\\
+        Выберем $z \in  A$ \\
+        Рассмотрим $g(y) = x$, если $\exists x$ т.ч $f(x)=y$. В противном случае $g(y) = z$ \\
+        $g(f(x)) = x$ (по построению) $\implies$ $g$ - обратное слево.\\
+        \\
+        2.  $\bimplies$: \\
+        Обозначим $g$ - правое обратное к $f$ \\
+        $\forall y \in B: \exists g(y)$ т.ч. $f(g(y)) = y$\\
+        2.  $\implies$: \\
+        $\forall y \in B: \exists x \in A$ т.ч. $f(x) = y$ \\
+        Пусть $g(y) = x \implies f(g(y)) = y \implies g$ - обратное справа.
 
 
-\section{Понятие равномерной непрерывности функции. Теорема Кантора}
+    \end{proof}
 
-\begin{definition}
-$(Равномерная \  непрерывность)$
-\\ $f \ непрерывна \  на\  D \subset \R \Leftrightarrow \forall x_{0} \in D \  \forall \varepsilon > 0: \exists \delta = \delta(\varepsilon, x_{0}): \forall x \  таких, что \\ |x - x_{0}| < \delta \ выполняется \ |f(x) - f(x_{0})| \ge \varepsilon_{0}$
-\end{definition}
 
-\begin{theorem}
-$(Кантора)$
-\\$Если \ функция \ f \ непрерывна \ на  \ [a,b], \ то  \ f \ равномерно \ непрерывна.$
-\end{theorem}
+    \section{Система действительных чисел (аксиоматика).}
 
-\begin{proof}. \\
-МОП: $\exists \varepsilon_{0} > 0: \forall  \delta > 0 \ \exists x_{1\delta}, x_{2\delta}: |x_{1,\delta} - x_{2,\delta}| < \delta, |f(x_{1,\delta}) - f(x_{2,\delta})|$
-\\Пусть $\delta_{h} \underset{h \rightarrow \infty}{\longrightarrow}0 \ \exists x_{1,h}, x_{2,h} \in [a,b]: |x_{1,h} - x_{2,h}| < \delta_{h} \rightarrow 0\\ |f(x_{1,h}) - f(x_{2,h})| \ge  \varepsilon_{0}$
-\\ По принципу выбора Больцано-Вейерштрасса:
-\\ $\exists \ сходящаяся \ подпоследовательность \ (x_{1,n_{k}})_{k = 1}^{\infty}$
-\\$(x_{1,n_{k}})_{k = 1}^{\infty}$, обозначим $x_{t,1} = x_{1, n_{k_{t}}}, x_{t,2} = x_{2, n_{k_{t}}} $
-\\
-\\Обозначим $x_{0} = \lim{t}{\infty} x_{t,1}$
-\\Докажем, что  $x_{0} = \lim{t}{\infty} x_{t,2}$
+    \begin{definition}[Множество вещественных чисел]
+        Множеством вещественных чисел называют множество удовлетворяющее следующим аксиомам.
+    \end{definition}
 
-\\$|x_{t,1} - x_{t,2}| < \delta_{n_{k_{t}}} \rightarrow 0$
-\end{proof}
+    $\forall a, b, c \in \R$:
+    \begin{enumerate}
+        \item (a + b) + c = a + (b + c)
+        \item a + b = b + a
+        \item $\exists 0 \in \R$ т.ч. $a + 0 = a$
+        \item $\exists -a \in R$ т.ч. $a + (-a) = 0$
+        \item (ab)c = a(bc)
+        \item ab = ba
+        \item $\exists 1 \in \R$ т.ч. $a \cdot 1 = a$
+        \item $ a \neq 0 \implies \exists a^{-1} \in R$ т.ч. $aa^{-1} = 1$
+        \item $a \leq a$
+        \item $a \leq b$ или $b \leq a$
+        \item $a \leq b$ и $b \leq a$ $\implies x = y$
+        \item $a \leq b$ и $b \leq c$ $\implies a \leq c$
+        \item $a \leq b \implies a+c \leq b+c$
+        \item $0 \leq a,b \implies 0 \leq ab$
+        \item Аксиома полноты: $\forall A, B \subset \R$ т.ч. $A, B \neq \emptyset$ и $(\forall a \in A, b \in B: a \leq b): \exists c \in \R$ т.ч. $\forall a \in A, b \in B: a \leq c \leq b$
+    \end{enumerate}
+
+
+    \section{Нижняя и верхняя грани числовых множеств. Лемма о существовании супремума.}
+
+    \begin{definition}[Супремум (инфинум)]
+        Наименьшая (наибольшая) из верхних (нижних) границ множества называется его супремумом (инфинумом) и обозначается $supA$ ($infA$).
+    \end{definition}
+
+    \begin{remark}
+        Доопределение супремума (инфинума) \\
+        $\forall A$ неогранич. сверху: $supA = +\infty$\\
+        $\forall A$ неогранич. снизу: $infA = -\infty$\\
+        $sup\emptyset = -\infty$\\
+        $inf\emptyset = +\infty$
+    \end{remark}
+
+    \begin{remark}
+        Если у множества есть наибольший (наименьший) элемент, то он единственный.
+    \end{remark}
+
+    \begin{proof}
+        $\forall x_1, x_2 = maxA: \forall x \in A: x \leq x_1, x_2 \implies x_1, x_2 \leq x_1, x_2 \implies x_1 = x_2$
+    \end{proof}
+
+    \begin{lemma}[Принцип супремума]
+        $\forall A \subset \R$ т.ч. $A \neq \emptyset$ и A огранич. сверху: $\exists!supA$
+    \end{lemma}
+
+    \begin{proof}
+        Единственность следует из предыдущего замечания, применённого к множеству верхних границ, а существование из аксиомы полноты, применённой к множеству А и множеству его верхних границ.
+    \end{proof}
+
+    \begin{remark}
+        Задание супремума неравенствами
+        \begin{enumerate}
+            \item $\forall x \in A: x \leq supA$
+            \item $\forall \epsilon > 0: \exists x_0 \in A$ т.ч. $c - \epsilon < x_0$
+        \end{enumerate}
+    \end{remark}
+
+
+    \section{Предел последовательности. Теорема о единственности предела последовательности.}
+
+    \begin{definition}[Последовательность]
+        Отображение из $\N$ в $Y \subset \R$ называют числовой последовательностью.
+    \end{definition}
+
+    \begin{notation}
+        $(x_n)_{n=1}^\infty$ - числовая последовательность
+    \end{notation}
+
+    \begin{notation}[$\epsilon$-окрестность]
+        $\forall \epsilon > 0:$\\
+        $\forall x \in \R: U_\epsilon(x) = (x-\epsilon, x+\epsilon)$\\
+        $U_\epsilon(+\infty) = (\epsilon, +\infty)$\\
+        $U_\epsilon(-\infty) = (-\infty, -\epsilon)$\\
+    \end{notation}
+
+    \begin{notation}[Предел последовательности]
+        Число $a \in \overline \R$ - предел последовательности $(a_n)_{n=1}^\infty$ $\iff$ $\forall \epsilon > 0: \exists N$ т.ч. $\forall n > N: a_n \in U_\epsilon(a)$
+    \end{notation}
+
+    \begin{theorem}
+        (О единственности предела)
+        Если последовательность имеет предел, то он единственный.
+    \end{theorem}
+
+    \begin{proof}
+        Предположим противное: $\exists a,b = \limn x_n \ т.ч. a \neq b$\\
+        Рассмотрим $\epsilon = \frac{b-a}{3}$\\
+        По определению предела последовательности: $\exists N$ т.ч. $\forall n > N: x_n \in U_\epsilon(a)$ и $\exists M$ т.ч. $\forall n > M: x_n \in U_\epsilon(b)$. $\implies \exists max(N, M)$ т.ч. $\forall n > max(N, M): x_n \in U_\epsilon(a) \cap U_\epsilon(b) = \emptyset$ ?!!
+    \end{proof}
+
+
+    \section{Теорема об ограниченности последовательности, имеющей конечный предел.}
+
+    \begin{definition}[Ограниченная последовательность]
+        Последовательность $(a)_{n=1}^\infty$ называется ограниченной $\iff \exists c \in \R$ т.ч. $\forall n \in \N: |a_n| < |c|$
+    \end{definition}
+
+    \begin{theorem}
+        (Об ограниченности последовательности, имеющей конечный предел)
+        \[\limn a_n \in \R \implies (a)_{n=1}^\infty\ ограничена\]
+    \end{theorem}
+
+    \begin{proof}
+        $\exists \epsilon = 1: \exists N \in \N\ т.ч.\ \forall n > N: a_n \in U_\epsilon(\limn a_n) \implies |a_n| < |\limn a_n + 1| \leq |\limn a_n| + 1 \implies
+        \exists c = max\{|a_1|, |a_2|, ..., |a_N|, |\limn a_n| + 1\}\ т.ч. \forall n \in \N: |a_n| < |c|
+        $
+    \end{proof}
+
+
+    \section{Бесконечно малые последовательности их свойства.}
+
+    \begin{definition}
+        (Бесконечно малая последовательность)
+        $(a)_{n=1}^\infty$ - бесконечно малая $\iff \limn a_n = 0$
+    \end{definition}
+
+    \begin{properties}
+        $\forall (a)_{n=1}^\infty$ - бесконечно малая
+        \begin{enumerate}
+            \item $\forall(b)_{n=1}^\infty$ - бесконечно малая: $(a_n + b_n)_{n=1}^\infty$ - бесконечно малая
+            \item $\forall(b)_{n=1}^\infty$ - ограниченная: $(a_n b_n)_{n=1}^\infty$ - бесконечно малая
+        \end{enumerate}
+    \end{properties}
+
+    \begin{proof}
+        .\\
+        \begin{enumerate}
+            \item $\forall \epsilon > 0: \exists max(N_1, N_2)$ т.ч. $\forall n > max(N_1, N_2): a_n, b_n < \frac{\epsilon}{2} \implies a_n+b_n<\epsilon$
+            \item $\exists c \in \R$ т.ч. $\forall n: |b_n|<c$\\
+            $\forall \epsilon > 0: \exists N$ т.ч. $\forall n > N: |a_n| < \frac{\epsilon}{c} \implies |a_n b_n| < \epsilon$
+        \end{enumerate}
+    \end{proof}
+
+
+    \section{Теорема об арифметических действиях с пределами последовательностей.}
+
+    \begin{theorem}
+        (Об арифметических действиях с пределами последовательностей)
+        Если $\limn a_n = a \in R, \limn b_n = b \in R$, то:
+        \begin{enumerate}
+            \item $a_n+b_n \to a+b$
+            \item $a_n-b_n \to a-b$
+            \item $a_n b_n \to ab$
+            \item $|a_n| \to |a|$
+            \item $b \neq 0 \implies \frac{a_n}{b_n} \to \frac{a}{b}$
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        $\limn a_n = a \iff \limn (a_n - a) = 0$ т.е. $(a_n - a)_{n=1}^\infty$ - БМП.
+        \begin{enumerate}
+            \item $(a_n + b_n - b - a)_{n=1}^\infty$ - БМП $\iff a_n + b_n \to a+b$
+            \item аналогично 1
+            \item $\forall \epsilon > 0: \exists max(N_1, N_2)$ т.ч. $\forall n > max(N_1, N_2):$\\
+            $|a_n-a| < min(\sqrt{\epsilon/3},\frac{\epsilon}{3b}), |b_n-b| < min(\sqrt{\epsilon/3},\frac{\epsilon}{3a}) \implies$\\
+            $|a_n b_n - ab| = |(a+(a-a_n))(b+(b-b_n))-ab|=|ab+a(b-b_n)+b(a-a_n)+(a-a_n)(b-b_n)-ab|\leq|a(b-b_n)|+|b(a-a_n)|+|(a-a_n)(b-b_n)| < |\frac{\epsilon a}{3a}| + |\frac{\epsilon b}{3b}| + |\sqrt{\epsilon/3}^2| = \epsilon$
+            \item $\forall \epsilon > 0: \exists N$ т.ч. $\forall n > N: |a_n - a| < \epsilon \implies ||a_n|-|a|| < \epsilon$
+            \item НУО: b > 0\\
+            $\exists N_1$ т.ч. $\forall n > N_1: |b_n - b| < b/2 \implies b_n - b > -b/2 \implies b_n > b/2$\\
+            $\forall \epsilon > 0$:\\
+            $\exists N_2$ т.ч. $\forall n > N_2: |b_n - b| < \epsilon b^2/2$\\
+            $\exists N = max\{N_1, N_2\}$ т.ч. $\forall n > N: |\frac{1}{b_n}-\frac{1}{b}|=\frac{|b_n-b|}{b_n b} < \frac{\epsilon b^2/2}{b^2/2}=\epsilon$\\
+            $\implies \frac{1}{b_n} \to \frac{1}{b}$, далее применяем пункт 3
+
+        \end{enumerate}
+    \end{proof}
+
+
+    \section{Теорема о предельном переходе в неравенстве.}
+
+    \begin{theorem}
+        (О предельном переходе в неравенстве)
+        $a_n \to a, b_n \to b:$\\
+        $(\exists N$ т.ч. $\forall n > N: a_n \leq b_n) \iff a \leq b$ \\
+        Равносильно: $a > b \implies (\exists N$ т.ч. $\forall n > N: a_n > b_n)$
+    \end{theorem}
+
+    \begin{proof}
+        $\implies:$\\
+        Предположим противное: $a > b$\\
+        $\exists \epsilon = \frac{a-b}{2}$\\
+        $\exists N_1: \forall n > N_1: |a_n - a| <
+        \epsilon \implies a_n > a - \epsilon $\\
+        $\exists N_2: \forall n > N_2: |b_n - b| <
+        \epsilon \implies b_n < b + \epsilon $\\
+        $\forall n > max(N_1, N_2): b_n<b+\epsilon=b+\frac{a-b}{2}=\frac{a+b}{2}=a-\frac{a-b}{2}=a-\epsilon<a_n$ ?!!
+    \end{proof}
+
+
+    \section{Теорема о сжатой последовательности}
+
+    \begin{theorem}[О сжатой последовательности]
+        \[a_n \leq c_n \leq b_n, a_n \to a, b_n \to a \implies c_n \to a\]
+    \end{theorem}
+
+    \begin{proof}
+        $\forall \epsilon > 0: \exists max(N_1, N_2)$ т.ч. $\forall n > max(N_1, N_2):$\\
+        $ a-\epsilon < a_n \leq c_n \leq b_n < a + \epsilon \implies |c_n - a| < \epsilon$
+    \end{proof}
+
+    \begin{corollary}
+        $|b_n| < a_n, a_n \to 0 \implies |b_n| \to 0$
+    \end{corollary}
+
+
+    \section{Бесконечно большие последовательности. Теорема об арифметических действиях с бесконечно большими последовательностями.}
+
+    \begin{definition}[ББП]
+        $(a_n)_{n=1}^\infty$ бесконечно большая $\iff a_n \to \infty, -\infty$ или $+\infty$
+    \end{definition}
+
+    \begin{theorem}
+        (Об арифметических действиях с бесконечно большими последовательностями)
+        \begin{enumerate}
+            \item $x_n \to +\infty, {y_n}$ ограничена снизу $\implies x_n + y_n \to +\infty $
+            \item $x_n \to -\infty, {y_n}$ ограничена сверху $\implies x_n + y_n \to -\infty $
+            \item $x_n \to \infty, {y_n}$ ограничена $\implies x_n + y_n \to \infty $
+            \item $x_n \to \rpm\infty, ((\forall n: y_n \geq b > 0)$ или $y_n \to b > 0$) $\implies x_n y_n \to \rpm\infty$
+            \item $x_n \to \rpm\infty, ((\forall n: y_n \leq b < 0)$ или $y_n \to b < 0$) $\implies x_n y_n \to \rmp\infty$
+            \item $x_n \to \infty, ((\forall n: |y_n| \leq b > 0)$ или $y_n \to b \neq 0$) $\implies x_n y_n \to \infty$
+            \item $x_n \to a \neq 0, y_n \to 0, (\forall n: y_n \neq 0) \implies \frac{x_n}{y_n} \to \infty$
+            \item $x_n \to a \in \R, y_n \to \infty \implies \frac{x_n}{y_n} \to 0$
+            \item $x_n \to \infty, y_n \to b \in \R, (\forall n: y_n \neq 0) \implies \frac{x_n}{y_n} \to \infty$
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        .\\
+        \begin{enumerate}
+            \item $\exists c \in \R$ т.ч. $\forall n: y_n > c$\\
+            $\forall \epsilon > 0: \exists N$ т.ч. $\forall n > N: x_n > \epsilon - c \implies x_n + y_n > \epsilon - c + c = \epsilon$
+            \item аналогично (1)
+            \item аналогично (1)
+            \item \begin{itemize}
+                      \item $x_n \to +\infty, (\forall n: y_n \geq b > 0):$\\
+                      $\forall \epsilon > 0: \exists N$ т.ч. $\forall n > N: x_n > \epsilon/b \implies x_n y_n > \frac{e}{b}b = \epsilon $
+                      \item $x_n \to +\infty, y_n \to b > 0:$\\
+                      $\exists N_1$ т.ч. $\forall n > N_1: y_n \in U_{b/2}(b) \implies y_n > b/2$\\
+                      $\forall \epsilon > 0: \exists N_2$ т.ч. $\forall n > N_2: x_n > 2\epsilon/b$\\
+                      $\forall n > max(N_1, N_2): x_n y_n > \frac{2\epsilon}{b}\frac{b}{2} = \epsilon$
+            \end{itemize}
+            \item аналогично (4)
+            \item аналогично (4)
+            \item $\exists N_1: \forall n > N_1: x_n \in U_{a/2}(a) \implies |x_n| > |a|/2$\\
+            $\forall \epsilon > 0$:\\
+            $\exists N_2: \forall n > N_2: |y_n| < |a|/2\epsilon$\\
+            $\forall n > max(N_1,N_2): |\frac{x_n}{y_n}|=\frac{|x_n|}{|y_n|} > \frac{|a/2|}{|a|/2\epsilon} = \epsilon$
+            \item $\forall \epsilon > 0: \exists N = max(N_1, N_2): \forall n > N: |x_n| < 2|a|, |y_n|>2|a|/\epsilon \implies \frac{|x_n|}{|y_n|} < \frac{2|a|}{2|a|/\epsilon} = \epsilon$
+            \item $\forall \epsilon > 0: \exists N = max(N_1, N_2): \forall n > N: |y_n| < 2|b|, |x_n|>2|b|\epsilon \implies \frac{|x_n|}{|y_n|} > \frac{2|b|\epsilon}{2|b|} = \epsilon$
+        \end{enumerate}
+    \end{proof}
+
+
+    \section{Теорема о пределе монотонной последовательности.}
+
+    \begin{theorem}[Теорема о пределе монотонной последовательности]
+        Если последовательность $(a_n)_{n=1}^\infty$ монотонна и ограничена, то она имеет предел, причём этот предел равен супремуму, если последовательность не убывает, или инфинуму, если последовательность не возрастает.
+    \end{theorem}
+
+    \begin{proof}
+        Доказательство для неубывающей последовательности.\\
+        Последовательность не убывает $\Rightarrow \forall n \in \N$: $a_n \leq a_{n+1}$.\\
+        Последовательность ограничена $\Rightarrow \exists S = sup((a_n)_{n=1}^\infty) \in \R $.\\
+        Из этого следует, что $\forall \epsilon > 0$ $\exists N(\epsilon): a_N > S - \epsilon$. Последовательность не убывает $\Rightarrow \forall n > N$: $a_n \geq a_N > S-\epsilon$. $S$ - супремум $\Rightarrow S - \epsilon < a_n \leq S$, при $n > N$. $S < S + \epsilon \Rightarrow S-\epsilon < a_n < S+\epsilon \Rightarrow |a_n - S| < \epsilon$, при $n > N(\epsilon)$. Это означает, что $S$ является пределом последовательности $(a_n)_{n=1}^\infty$. Доказательство случая с бесконечно убывающей последовательностью аналогично.
+    \end{proof}
+
+
+    \section{Число $e$, как предел последовательности $(1 + \frac{1}{n})^n$, при $n \rightarrow \infty$, $n \in \N$.}
+
+    \begin{theorem}%Не уверен, что это именно теорема. Ну и тут какойто кринж происходит в плане оформления. - У меня в конспекте это идёт как "Пример", но, по-моему, это не лучше, чем теорема.
+    [Существование и конечность предела последовательности $(1 + \frac{1}{n})^n$, при $n \rightarrow \infty$, $n \in \N$.]
+        Предел последовательности $(1 + \frac{1}{n})^n$, при $n \rightarrow \infty$, $n \in \N$ существует и конечен.
+    \end{theorem}
+
+    \begin{proof}
+
+        Рассмотрим $y_n = (1 + \frac{1}{n})^{n+1}$\\
+        $\frac{y_{n-1}}{y_n} = \frac{(1 + \frac{1}{n-1})^n}{(1 + \frac{1}{n})^{n+1}}=\frac{(\frac{n}{n-1})^n}{(\frac{n+1}{n})^{n+1}}=\frac{n^{2n+1}}{(n-1)^n (n+1)^{n+1}} = \frac{n^{2n}}{(n^2-1)^n} \frac{n}{n+1} = (\frac{n^2}{n^2-1})^n \frac{n}{n+1} = (1 + \frac{1}{n^2-1})^n \frac{n}{n+1} \geq_{нерав.\ Бернулли} (1+\frac{n}{n^2-1}) \frac{n}{n+1} = \frac{n^2+n-1}{n^2-1} \frac{n}{n+1} = \frac{n^3+n^2-n}{n^3+n^2-n-1} \geq 1$\\$ \implies (y_n)$ убывает, $y_n > 0 \implies_{т.\ о\ пределе\ монот.\ п-ти} \limn y_n \in \R$\\
+
+        $\limn y_n = \limn (1 + \frac{1}{n})^{n+1} = \limn ((1 + \frac{1}{n})^n (1 + \frac{1}{n}))$\\$ = \limn (x_n \cdot 1) = \limn x_n$\\
+
+        *Неравенство Бернулли: $\forall x > -1: (1+x)^n \geq 1 + nx$
+
+    \end{proof}
+
+
+    \section{Подпоследовательности. Простые свойства подпоследовательностей.}
+
+    \begin{definition}
+        (Подпоследовательность)\\
+        Пусть $(n_k)_{k=1}^\infty$ - строго возрастающая последовательность, $(x_n)_{n=1}^\infty$ - последовательность, тогда $(x_{n_k})_{k=1}^\infty$ - подпоследовательность $(x_n)_{n=1}^\infty$.
+    \end{definition}
+
+    \begin{remark}
+        $\forall k \in \N$: $ n_k \geq k$
+    \end{remark}
+
+    \begin{properties}
+        (Свойства подпоследовательностей).
+        \begin{enumerate}
+
+            \item Если $\limn a_n = a \Rightarrow \forall (n_k)_{k=1}^\infty$ $\lim{k}{\infty}a_{n_k} = a$
+
+            \item Если $\lim{k}{\infty}a_{n_k} = a$, $\lim{l}{\infty}a_{m_l} = a$ и $\{n_k:k\in\N\}\cup \{m_l:l\in\N\} = \N \Rightarrow \limn a_n = a$.
+
+        \end{enumerate}
+    \end{properties}
+
+    \begin{proof}
+        .
+        \begin{enumerate}
+
+            \item $\forall (n)_{k=1}^\infty$ $\forall \epsilon > 0$ $ \exists N: \forall k > N:$ $x_k \in U_\epsilon(a)$, $n_k \geq k > N \Rightarrow x_{n_k} \in U_\epsilon(a)$
+
+            \item $\forall \epsilon > 0$ $\exists K(\epsilon)$, $L(\epsilon):\forall n_k > K$ и $m_l > L$ $|a_{n_k} - a| < \epsilon$, $|a_{m_l} - a| < \epsilon \Rightarrow \forall n > max(n_k, m_l)$ $|a_n - a| < \epsilon \Rightarrow \limn a_n = a$ %Вроде это верно,,,,,
+
+        \end{enumerate}
+    \end{proof}
+
+
+    \section{Лемма о стягивающихся отрезках.}
+
+    \begin{definition}
+        (Стягивающиеся отрезки)
+        Последовательность $([a_n, b_n])_{n=1}^\infty$ называется стягивающейся, если она вложена $(\forall n \in \N: [a_{n+1}, b_{n+1}] \subset [a_n, b_n])$ и $(b_n - a_n) \to 0$.
+    \end{definition}
+
+    \begin{lemma}[О стягивающихся отрезках]
+        $\forall ([a_n, b_n])_{n=1}^\infty$ - последовательность стягивающихся отрезков: \[\exists!c \in \cap_{n=1}^\infty[a_n, b_n]\]
+    \end{lemma}
+
+    \begin{proof}
+        (?) $\forall n,k \in \N: a_n \leq b_k$\\
+        Предположим противное: $\exists n,k \in \N: a_n > b_k \implies a_k \leq b_k < a_n \leq b_n \implies [a_n, b_n] \cap [a_k, b_k] = \emptyset$ (противоречит вложенности)\\
+        $\forall a \in (a)_{n=1}^\infty, b \in (b)_{n=1}^\infty: a \leq b \implies_{аксиома\ полноты} \exists c \in \R: \forall n \in \N: a_n \leq c_n \leq b_n \implies c_n \in \cap_{n=1}^\infty[a_n, b_n]$\\
+
+        Единственность: $\forall c, d \in \cap_{n=1}^\infty[a_n, b_n]: \forall n \in \N: a_n \leq c, d \leq b_n \implies$\\$ a_n-b_n \leq c-d  \leq b_n-a_n \implies_{т.\ о\ предельном\ переходе\ в\ неравенстве} 0 \leq c-d \leq 0 \implies c=d $
+
+    \end{proof}
+
+
+    \section{Принцип выбора Больцано-Вейерштрасса.}
+
+    \begin{theorem}[Принцип выбора Больцано-Вейерштрасса]
+        Из любой ограниченной последовательности можно выбрать сходящуюся подпоследовательность.
+    \end{theorem}
+
+    \begin{proof}
+        $(x_n)_{n=1}^\infty$ - ограничена $\implies \exists [a_1, b_1]: \forall n \in \N: x_n \in [a_1, b_1]$\\
+        Выберем такой $n_1$, что $x_{n_1} \in [a_1, b_1]$\\
+        Разобьём $[a_1, b_1]$ пополам и обозначим $[a_2, b_2]$ половину, которая содержит бесконечно много членов последовательности $(x_n)_{n=1}^\infty$.\\
+        Выберем такой $n_2 > n_1$, что $x_{n_2} \in [a_2, b_2]$\\
+        .\\
+        .\\
+        .\\
+        Разобьём $[a_k, b_k]$ пополам и обозначим $[a_{k+1}, b_{k+1}]$ половину, которая содержит бесконечно много членов последовательности $(x_n)_{n=1}^\infty$.\\
+        Выберем такой $n_{k+1} > n_k$, что $x_{n_{k+1}} \in [a_{k+1}, b_{k+1}]$\\
+        .\\
+        .\\
+        .\\
+        \bigskip
+
+        $([a_n, b_n])_{n=1}^\infty$ - стягивающиеся отрезки (вложенность по построению,\\ $b_n - a_n = \frac{b_1-a_1}{2^{n-1}} \to 0) \implies \exists!c \in \cap_{n=1}^\infty[a_n,b_n]$\\
+        $|c - x_{n_k}| \leq b_k - a_k \to 0 \implies_{т.\ о\ сжатой\ последовательности} x_{n_k} \to c$\\
+
+    \end{proof}
+
+    \begin{remark}
+        Из любой неограниченной сверху (снизу) последовательности можно выбрать подпоследовательность, стремящуюся к $+\infty\ (-\infty)$
+    \end{remark}
+
+
+    \section{Определение верхнего и нижнего пределов последовательности. Лемма о существовании пределов.}
+
+    \begin{definition}[Частичный предел]
+        Величина a называется частичным пределом последовательности $(x_n)_{n=1}^\infty$, если $\exists (n_k)_{k=1}^\infty: x_{n_k} \to a$
+    \end{definition}
+
+    \begin{remark}
+        Если последовательность не ограничена сверху (снизу), то пологают $\forall n \in \N: sup\{x_n, x_{n+1}, ...\} = +\infty\ (inf\{x_n, x_{n+1}, ...\} = -\infty)$
+    \end{remark}
+
+    \begin{definition}[Верхний (нижний) предел]
+        $\forall (x_n)_{n=1}^\infty:$\\
+        \[\limsupn x_n := \limn (sup \{x_n, x_{n+1}, ...\}) - верхний\ предел\]
+        \[\liminfn x_n := \limn (inf \{x_n, x_{n+1}, ...\}) - нижний\ предел\]
+    \end{definition}
+
+    \begin{lemma}[О существовании верхнего и нижнего пределов]
+        $\forall (x_n)_{n=1}^\infty: \exists!\liminfn x_n, \limsupn x_n: \liminfn x_n < \limsupn x_n$
+    \end{lemma}
+
+    \begin{proof}
+        Обозначим $s_n := sup\{x_n, x_{n+1}, ...\}, i_n := inf\{x_n, x_{n+1}, ...\}$\\
+        По определению супремума и инфунума: $(s_n)\searrow,\ (i_n)\nearrow, \forall n \in \N: i_1 \leq i_n \leq x_n \leq s_n \leq s_1$\\
+
+        \paragraph{Случай 1}($(x_n)$ ограничена)\\
+        $(s_n) \searrow, s_n \geq i_1 \in \R \implies_{т.\ о\ пределе\ монотонной\ последовательности} \exists \limn s_n$\\
+        Аналогично $\exists \limn i_n$
+
+        \paragraph{Случай 2}($(x_n)$ ограничена снизу, но не сверху)\\
+        $\limsupn x_n = +\infty$\\
+        Аналогично случаю (1) $\exists \limn i_n$
+
+        \paragraph{Случай 3}($(x_n)$ ограничена сверху, но не снизу) Аналогично случаю (2)
+
+        \paragraph{Случай 4}($(x_n)$ не ограничена ни снизу, ни сверху)\\
+        $\limsupn x_n = +\infty$\\
+        $\liminfn x_n = -\infty$\\
+    \end{proof}
+
+
+    \section{Теорема о верхнем и нижнем пределе подпоследовательности.}
+
+    \begin{theorem}[О верхнем и нижнем пределе последовательности]
+        Верхний (нижний) предел - наибольший (наименьший) из частичных пределов
+    \end{theorem}
+
+    \begin{proof}
+        \item{Случай 1}($(x_n)$ ограничена)\\
+        Обозначим $b = \limsupn x_n$\\
+        $s_n \to b \implies \forall \epsilon > 0: \exists N: \forall n \geq N: s_n > b - \epsilon$\\
+        $(s_n)\searrow \implies \forall n < N: s_n \geq s_N > b - \epsilon$\\
+        Итого: $\forall n \in N: s_n > b - \epsilon$\\
+        Построим подпоследовательность $x_{n_k}$ следующим образом:\\
+        $z_1 = sup\{x_1, x_2, ...\} > b - 1 \implies$ выберем из $\{x_1, x_2, ...\}$ такой $x_{n_1}$, что $x_{n_1} > b - 1$\\
+        $z_{n_1+1} = sup\{x_{n_1+1}, x_{n_1+2}, ...\} > b - 1/2 \implies$ выберем из $\{x_{n_1+1}, x_{n_1+2}, ...\}$ такой $x_{n_2}$, что $x_{n_2} > b - 1/2$\\
+        .\\
+        .\\
+        .\\
+        $z_{n_k+1} = sup\{x_{n_k+1}, x_{n_k+2}, ...\} > b - \frac{1}{k+1} \implies$ выберем из $\{x_{n_k+1}, x_{n_k+2}, ...\}$ такой $x_{n_{k+1}}$, что $x_{n_{k+1}} > b - \frac{1}{k+1}$\\
+        .\\
+        .\\
+        .\\
+        \bigskip\\
+
+        Имеем: $b - 1/k < x_{n_k} \leq z_{n_k} \implies_{т.\ о\ предел\ переходе\ в\ нерав} b \leq \limn x_{n_k} \leq b \implies x_{n_k} \to b \implies b $ - частичный предел последовательности $x_n$\\
+        $\forall x_{m_k} \to B: x_{m_k} \leq z_{m_k} \implies_{т.\ о\ предел\ переходе\ в\ нерав} B \leq b \implies b$ - наибольший частичный предел\\
+        Аналогично для нижнего предела.\\
+
+        \item{Случай 2}($(x_n)$ ограничена сверху, но не снизу)\\
+        $\liminfn x_n = -\infty$ очевидно наименьший, по замечанию к принципу выбора можно выбрать $x_{n_k} \to -\infty$\\
+        Для верхнего предела аналогично случаю (1)
+
+        \item{Случай 3}($(x_n)$ ограничена снизу, но не сверху)\\
+        Аналогично случаю (2)
+
+        \item{Случай 4}($(x_n)$ не ограничена ни снизу, ни сверху)\\
+        $\liminfn x_n = -\infty$ очевидно наименьший, по замечанию к принципу выбора можно выбрать $x_{n_k} \to -\infty$\\
+        $\limsupn x_n = +\infty$ очевидно наибольший, по замечанию к принципу выбора можно выбрать $x_{n_k} \to +\infty$\\
+    \end{proof}
+
+    \begin{corollary}
+        $\exists \limn x_n \iff \limsupn x_n = \liminfn x_n$
+    \end{corollary}
+
+    \begin{proof}
+        $\implies:$ По простому свойству подпоследовательности\\
+        $\bimplies:$ По т. о сжатой последовательности $i_n \leq x_n \leq z_n, i_n \to a, z_n \to a \implies x_n \to a$
+    \end{proof}
+
+
+    \section{Критерий Коши сходимости последовательности.}
+
+    \begin{definition}
+        (Фундаментальная последовательность)
+        $(x_n) - $ фундаментальная последовательность $\iff \forall \epsilon > 0: \exists N: \forall n, m > N: |x_n - x_m| < \epsilon$
+    \end{definition}
+
+    \begin{theorem}[Критерий Коши сходимости последовательности]
+        $(x_n)$ - сходится $\iff (x_n)$ - фундаментальна
+    \end{theorem}
+
+    \begin{proof}
+        .\\
+        $\implies:$ Обозначим $a = limn x_n \in \R$\\
+        $\forall \epsilon > 0: \exists N: \forall n, m > N: |x_n - a|, |x_m - a| < \epsilon/2 \implies |x_n-x_m|=|x_n-a+a-x_m|\leq|x_n-a|+|a-x_m| < \epsilon$\\
+        $\bimplies:$ (?) $(x_n)$ - ограниченная\\
+        ($\exists \epsilon = 1: \exists N: \forall n > N: |x_{N+1} - x_n| < \epsilon \implies |x_n| < |x_{N+1}| + \epsilon = |x_{N+1}| + 1) \implies (x_n)$ - ограниченная.\\
+        По принципу выбора $\exists\ x_{n_k} \to a \in \R$\\
+        $\forall \epsilon > 0:$
+        \begin{enumerate}
+            \item $\exists K: \forall k \geq K: |x_{n_k}-a| < \epsilon/2$
+            \item $\exists N: \forall n, n_k \geq N: |x_n - x_{n_k}| < \epsilon/2$
+            \item $\forall n \geq max(n_K, N): |x_n - a| = |x_n - x_{n_{max(N, K)}} + x_{n_{max(N, K)}} - a| \leq |x_n - x_{n_{max(N, K)}}| + |x_{n_{max(N, K)}} - a| < \epsilon/2 + \epsilon/2 = \epsilon$
+        \end{enumerate}
+        $(3) \implies (x_n)$ сходится.
+    \end{proof}
+
+
+    \section{Определение числового ряда. Простейшие свойства.}
+
+    \begin{definition}[Числовой ряд]
+        $a_1 + a_2 + ... = \sum_{k=1}^\infty a_k$, где $\forall n \in \N: a_n \in \R$, называют числовым рядом.\\
+        $a_n$ - член ряда\\
+        $S_n := a_1 + ... + a_n = \sum_{k=1}^n a_k$ - частичная сумма ряда
+    \end{definition}
+
+    Если $S_n \to S$, то $S = \sum_{k=1}^\infty a_k$, $S \in R \iff ряд сходится$\\
+
+    \begin{properties}[Ряды]
+        .\\
+        \begin{enumerate}
+            \item $\sum_{n=1}^\infty a_n$ - сходится $\implies \forall c \in \R: \sum_{n=1}^\infty c a_n$ - сходится, причём $c\sum_{n=1}^\infty a_n = \sum_{n=1}^\infty c a_n$ (однородность)
+            \item $\sum_{n=1}^\infty a_n, \sum_{n=1}^\infty b_n$ - сходятся $\implies \sum_{n=1}^\infty(a_n + b_n)$ - сходится, причём $\sum_{n=1}^\infty a_n + \sum_{n=1}^\infty b_n = \sum_{n=1}^\infty (a_n+b_n)$ (адиктивность)
+            \item $\sum_{n=1}^\infty a_n$ - сходится $\implies a_n \to 0$ (необходимое условие сходимости)
+        \end{enumerate}
+
+        \begin{proof}
+            .\\
+            1,2. Тревиально по определению предела, применённому к $(S_n)$\\
+            3. Имеем $a := \limn S_n = \sum_{n=1}^\infty a_n \in \R$\\
+            $\limn a_n = \limn (S_n - S_{n-1}) = \limn S_n - \limn S_{n-1} = a - a = 0$
+        \end{proof}
+    \end{properties}
+
+
+    \section{ Остаток ряда. Теорема об остатке.}
+
+    \begin{definition}[Остаток ряда]
+        Ряд $\sum_{k=m+1}^\infty a_k$ называют остатком ряда $\sum_{k=1}^\infty a_k$ после m-ого члена.
+    \end{definition}
+
+    \begin{theorem}[Об остатках]
+        .\\
+        \begin{enumerate}
+            \item $\forall m: \sum_{k=1}^\infty a_k$ - сходится $\iff \sum_{k=m+1}^\infty a_k$ - сходится.
+            \item $\sum_{k=1}^\infty a_k$ - сходится $\iff \lim{m}{\infty}\sum_{k=m+1}^\infty a_k = 0$
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        Обозначим $r_m = \sum_{k=m+1}^\infty a_k$ - остаток
+        \begin{enumerate}
+            \item $\forall m: \sum_{k=1}^\infty a_k\ сходится\ \iff S_n \to S \in \R \iff S'_n = S_n - S_m \to (S - S_m) \in \R \iff \sum_{k=m+1}^\infty a_k$ - сходится.
+            \item $\implies:$ $\sum_{k=1}^\infty a_k\ сходится\ \implies S_n \to S \implies r_m = \sum_{k=m+1}^\infty a_k = \sum_{k=1}^\infty a_k - \sum_{k=1}^m a_k = S - S_m \to S - S = 0$\\
+            $\bimplies:$ $\exists (r_m)_{m=1}^\infty, r_m \in R \implies$ ряд сходится по пункту (1.$\bimplies$)
+        \end{enumerate}
+    \end{proof}
+
+
+    \section{Положительный ряд. Основная теорема для положительных рядов.}
+
+    \begin{definition}[Положительный ряд]
+        Ряд $\sum_{k=1}^\infty a_k$ называется положительным, если $\forall k \in \N: a_k \geq 0$
+    \end{definition}
+
+    \begin{theorem}[Основное свойство положительного ряда]
+        Положительный ряд сходится $\iff (S_n)_{n=1}^\infty$ ограничена сверху.
+    \end{theorem}
+
+    \begin{proof}
+        $S_{n+1} = (a_1 + ... + a_n) + a_{n+1} = S_n + a_{n+1} \geq S_n \implies (S_n)\nearrow, (S_n)_{n=1}^\infty$ ограничена сверху (дано) $\implies_{т.\ о\ предел\ монот\ послед} (S_n)$ сходится
+    \end{proof}
+
+
+    \section{Признак сравнения положительных рядов. Следствие.}
+
+    \begin{theorem}[Признак сравнения положительных рядов]
+        $\forall A = \sum_{k=1}^\infty a_k, B = \sum_{k=1}^\infty b_k$ - положительные ряды т.ч. $(\exists N: \forall n \geq N: a_n \leq b_n):$\\
+        \begin{enumerate}
+            \item $A\ сходится\ \implies B\ сходится$
+            \item $A\ расходится\ \implies B\ расходится$
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        .\\
+        \begin{enumerate}
+            \item Если $N = 1$, то $\forall n \in N: a_n \leq b_n$\\
+            Обозначим $A_n = \sum_{k=1}^n a_k, B_n = \sum_{k=1}^n b_k \implies \forall n \in \N: A_n \leq B_n$\\
+            $(B_n)\ сходится\ \implies B\ ограничена\ сверху\ \implies (A_n)\ ограничена\ сверху\ \implies A$ сходится по основному свойству положительных рядов\\
+            Если N > 1, то можно свести задачу к случаю N = 1, перейдя к N-ым остаткам и обратно.
+            \item Другая форма записи (1), т.к. $(a \implies b) \iff (\lnot a \bimplies \lnot b)$
+        \end{enumerate}
+    \end{proof}
+
+    \begin{corollary}
+        $\forall A = \sum_{k=1}^\infty a_k, B = \sum_{k=1}^\infty b_k$ - положительные ряды т.ч. $\frac{a_k}{b_k}\to p \in [0, +\infty], \forall k \in \N: b_k > 0$:
+        \begin{enumerate}
+            \item $p < +\infty \implies (B\ сходится\ \implies A\ сходится)$
+            \item $p > 0 \implies (B\ расходится\ \implies A\ расходится)$
+            \item $p \in (0,+\infty) \implies (B\ сходится\ \iff A\ сходится)$
+        \end{enumerate}
+    \end{corollary}
+
+    \begin{proof}
+        .\\
+        \begin{enumerate}
+            \item $\exists \epsilon = 1: \exists N: \forall n > N: \frac{a_n}{b_n} < p + 1 \implies a_n < b_n (p+1)$\\
+            B сходится $\implies_{св-во\ рядов} \sum_{k=1}^\infty(p+1)b_k\ сходится\ \implies_{признак\ сравнения} A$ сходится
+            \item Если $p \in (0, +\infty)$, то $\exists \epsilon \in (0, p): \exists N: \forall n > N: \frac{a_n}{b_n} > p - \epsilon \implies a_n > (p - \epsilon)b_n \implies (B\ расходится\ \implies А$ расходится (аналогично 1))\\
+            Если $p = +\infty$, то $\exists \epsilon = 1: \exists N: \forall n > N: \frac{a_n}{b_n} > 1 \implies a_n > b_n \implies (B\ расходится\ \implies А$ расходится (по признаку сравнения))
+        \end{enumerate}
+    \end{proof}
+
+
+    \section{Критерий Коши сходимости числового ряда.}
+
+    \begin{theorem}[Критерий Коши сходимости ряда]
+        Ряд $\sum_{k=1}^\infty a_k$ сходится $\iff \forall \epsilon > 0: \exists N: \forall n > N: \forall p \in \N: |\sum_{k=n+1}^{n+p} a_k| < \epsilon$
+    \end{theorem}
+
+    \begin{proof}
+        $(\forall \epsilon > 0: \exists N: \forall n > N: \forall p \in \N: |\sum_{k=n+1}^{n+p} a_k| = |\sum_{k=1}^{n+p} a_k - \sum_{k=1}^{n} a_k| = |S_{n+p} - S_n| < \epsilon) \implies (S_n)_{n=1}^\infty - фундаментальная \implies (S_n) - сходится$
+    \end{proof}
+
+    \section{Предельная точка множества. Два определения предела функции: по Коши (на языке окрестностей), по Гейне (на языке
+    последовательностей). Односторонние пределы функции. Верхний и нижний пределы функции. Теорема о единственности
+    предела функции.}
+
+    \begin{notation}
+        $\overline{\R} = \R \cup \{-\infty, +\infty\}$\\
+        $\forall \epsilon > 0: \forall x \in \overline{\R}:$\\
+        $\U_\epsilon(x) = U_\epsilon(x) \setminus \{x\}$ - проколотая окрестность\\
+        $\U_{+\epsilon} = (a, a + \epsilon)$ - правая полуокрестность\\
+        $\U_{-\epsilon} = (a - \epsilon, a)$ - левая полуокрестность
+    \end{notation}
+
+    \begin{definition}[Предельная точка]
+        Точка $a \in \overline{\R}$ называется предельной точкой множества $D \subset \R$, если $\forall \epsilon > 0: \exists b \in D \cap \U_\epsilon(a)$
+    \end{definition}
+
+    \begin{definition}[Предел функции по Коши (на языке окрестностей)]
+        $D \subset \R, a$ - предельная точка D.\\
+        Величину $b \in \overline{\R}$ называют пределом функции $f: D \to \R$, если\\
+        $\forall \epsilon > 0: \exists \delta > 0: \forall x \in \U_\delta(a) \cap D: f(x) \in U_\epsilon$
+    \end{definition}
+
+    \begin{definition}[Односторонний предел функции]
+        $D \subset \R, a$ - предельная точка D.\\
+        Величину $b \in \overline{\R}$ называют пределом функции $f: D \to \R$ справа (слева), если\\
+        $\forall \epsilon > 0: \exists \delta > 0: \forall x \in \U_{\delta\rpm0}(a) \cap D: f(x) \in U_\epsilon$
+    \end{definition}
+
+    \begin{definition}[Предел функции по Гейне (на языке последовательностей)]
+        $D \subset \R, a$ - предельная точка D.\\
+        Величину $b \in \overline{\R}$ называют пределом функции $f: D \to \R$, если\\
+        $\forall (x_n)_{n=1}^\infty$ т.ч. $x_n \to a, x_n \in D, x_n \neq a: f(x_n) \to b$
+    \end{definition}
+
+    \begin{definition}[Частичный предел функции]
+        $D \subset \R, a$ - предельная точка D.\\
+        Величину $b \in \overline{\R}$ называют пределом функции $f: D \to \R$, если\\
+        $\exists (x_n)_{n=1}^\infty$ т.ч. $x_n \to a, x_n \in D, x_n \neq a: f(x_n) \to b$
+    \end{definition}
+
+    \begin{definition}[Верхний (нижний) предел функции]
+        Наибольший (наименьший) частичный предел функции называют верхним (нижним) пределом функции.
+    \end{definition}
+
+    \begin{theorem}[О единственности предела функции]
+        Если у функции есть предел, то он единственный
+    \end{theorem}
+
+    \begin{proof}
+        $\forall b, c = \lim{x}{a}f(x):$\\
+        $\forall (x_n)_{n=1}^\infty x_n\to a, x_n\in D, x_n \neq a: f(x_n) \to b, f(x_n) \to c \implies b = c$ (по т. о единственности предела последовательности)
+    \end{proof}
+
+
+    \section{Доказательство равносильности двух определений предела функции}
+    \begin{theorem}[Эквивалентность определений предела функции]
+        Определения предела по Коши и по Гейну эквивалентны
+    \end{theorem}
+
+    \begin{proof}
+        .\\
+        $К\impliesГ: \lim{x}{a}f(x) =_К b$\\
+        $\forall \epsilon > 0: \exists \delta > 0$ т.ч $(x \in \U_\delta(a) \cap D \implies f(x) \in U_\epsilon(b))$\\
+        $\forall (x_n)_{n=1}^\infty$ т.ч. $x_n \to a, x_n \in D, x_n \neq a: (\exists N: \forall n > N: x_n \in \U_\delta(a) \implies f(x_n) \in U_\epsilon(b)) \implies f(x_n) \to b \implies \lim{x}{a}f(x) =_Г b$\\
+        \\
+        $(Г \implies К) \iff (\lnotК \implies \lnotГ)$\\
+        $\lnotК \implies \lnotГ: \lim{x}{a}f(x) \neq_К b$\\
+        $\exists \epsilon > 0: \forall \delta = \frac{1}{n}, n \in \N: \exists x_n \in \U_\delta(a) \cap D: f(x_n) \notin U_\epsilon(b)$\\
+        1. $x_n \in \U_{1/n}(a) \cap D \implies x_n \to a, x_n \in D, x_n \neq a$\\
+        2. $f(x_n) \notin U_\epsilon(b) \implies f(x_n) \not\to b$\\
+        $(1), (2) \implies \lim{x}{a}f(x) \neq_Г b$
+    \end{proof}
+
+    \section{Теорема о локальной ограниченности функции, имеющей предел. Теорема о стабилизации знака функции, имеющей
+    предел.}
+
+    \begin{theorem}[О стабилизации знака функции, имеющей
+    предел]
+        \[\forall (f: D \to \R), \lim{x}{a}f(x) = b \in \overline{\R}\setminus\{0\}: \exists \U(a): \exists M \in \R: \forall x \in \U(a) \cap D: sign(f(x)) = sign(b)\]
+    \end{theorem}
+
+    \begin{proof}
+        Н.У.О. b > 0\\
+        Предположим противное: $\forall \U_{1/n}(a): \exists x_n \in \U_{1/n}(a) \cap D: f(x_n) < 0$\\$ \implies_{переход\ неравенства\ в\ пределы} f(x_n) \to_Г b \leq 0$ ?!!
+    \end{proof}
+
+    \begin{theorem}[О локальной ограниченности функции, имеющей предел]
+        \[\forall (f: D \to \R), \lim{x}{a}f(x) = b \in \R: \exists \U(a): \exists M \in \R: \forall x \in \U(a) \cap D: |f(x)| < M\]
+    \end{theorem}
+
+    \begin{proof}
+        $\exists \epsilon = 1: \exists \delta > 0: \forall x \in \U_\delta(a): |x-b| < \epsilon = 1 \implies |x| < |b| + 1$
+    \end{proof}
+
+
+    \section{Бесконечно малые и бесконечно большие функции, связь между ними. Теорема об арифметических действиях над функциями, имеющими предел. Теорема о пределе композиции.} TODO
+
+
+    \section{Теоремы о предельном переходе в неравенстве для функций. Теорема о сжатой функции.} TODO
+
+
+    \section{Теорема о пределе монотонной функции.}
+
+    \begin{theorem}[О пределе монотонной функции]
+        $\forall (f: D \to \R)$, a - предельная точка D:\\
+        \begin{enumerate}
+            \item $D_1 = D \cap (-\infty, a) \neq \emptyset:$\\
+            \begin{enumerate}
+                \item $f\nearrow\ на\ D_1 \implies f(a-0)=\sup{x\in D_1}f(x)$
+                \item $f\searrow\ на\ D_1 \implies f(a-0)=\inf{x\in D_1}f(x)$
+            \end{enumerate}
+            \item $D_2 = D \cap (a, +\infty) \neq \emptyset:$\\
+            \begin{enumerate}
+                \item $f\nearrow\ на\ D_2 \implies f(a+0)=\inf{x\in D_2}f(x)$
+                \item $f\searrow\ на\ D_2 \implies f(a+0)=\sup{x\in D_2}f(x)$
+            \end{enumerate}
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        .\\
+        1.(а): Обозначим $b := \sup{x\in D_1}f(x)$\\
+        По определению супремума: $\forall \epsilon > 0: \exists x_0\in D_1: f(x_0) > b - \epsilon$\\
+        $f\nearrow \implies \forall x \in (x_0, a): f(x_0) \geq f(x_0) > b - \epsilon$\\
+        Т.е. $\exists \delta = a - x_0: \forall x \in \U_\delta(a-0): f(x) \in U_\epsilon(b) \implies f(a-0) =_К b$\\
+        Остальные пункты доказываются аналогично.
+    \end{proof}
+
+
+    \section{Критерий Коши существования предела функций.}
+
+    \begin{theorem}[Критерий Коши существования предела функции]
+        \[\forall (f: D \to \R), a\ -\ предельная\ точка\ D:\]
+        \[\lim{x}{a} f(x) \in \R \iff \forall \epsilon > 0: \exists \delta > 0: \forall x_1, x_2 \in \U_\delta(a) \cap D: |f(x_1) - f(x_2)| < \epsilon\]
+    \end{theorem}
+
+    \begin{proof}
+        .\\
+        $\implies:$ Обозначим $b := \lim{x}{a}f(x)$\\
+        По определению предела функции по Коши: $\forall \epsilon > 0: \exists \delta > 0: \forall x_1, x_2 \in \U_\delta(a): |f(x_1) - b|, |f(x_2) - b| < \epsilon/2 \implies |f(x_1) - f(x_2)| < \epsilon$\\\\
+        $\bimplies: \forall \epsilon > 0: \exists \delta > 0: (x_1, x_2 \in \U_\delta(a) \cap D \implies |f(x_1) - f(x_2)| < \epsilon)$\\
+        $\forall (x_n)_{n=1}^\infty, x_n \to a, x_n \in D, x_n \neq a: \exists N: \forall n, m > N: x_n, x_m \in \U_\delta(a) \implies |f(x_n) - f(x_m)| < \epsilon$\\
+        По критерию Коши сходимости последовательности: $\exists b := \limn f(x_n) \in R$\\
+        По определению предела функции по Гейну$^*: \lim{x}{a}f(x) = b$\\\\
+
+        $^*$ Здесь используется следующий факт:\\
+        $(\forall (x_n)_{n=1}^\infty, x_n \to a, x_n \in D, x_n \neq a:
+        \exists b = \limn f(x_n)) \implies$ все эти b равны.\\\\
+        Для любых таких $(x_n)_{n=1}^\infty$ и $(x'_n)_{n=1}^\infty$ равенство $\limn f(x_n)$ и $\limn f(x'_n)$ доказывается построением $(z_n)_{n=1}^\infty = \{x_1, x'_1, x_2, x'_2, ...\}$, стремящейся по условию к $b = \limn f(x_n)$, и замечанием того, что $f(x_n)$ и $f(x'_n)$ стремятся к b, как подпоследовательности.
+    \end{proof}
+
+
+    \section{Определение непрерывности функции в точке, на множестве. Односторонняя непрерывность. Изолированные точки множества. Точки разрыва функции и их классификация.}
+
+    \begin{definition}[Непрерывность функции в точке, на множестве]
+        .\\
+        $\forall (f: D \to \R)$:
+        \begin{enumerate}
+            \item f непрерывна в точке $a \in D \iff a\ -\ изолированная\ точка\ или\ f(a) = \lim{x}{a}f(x)$
+            \item f непрерывна на $A \subset D \iff \forall a\in A:$ f непрерывна в точке a
+        \end{enumerate}
+    \end{definition}
+
+    \begin{remark}
+        По Коши:\\
+        f непрерывна в $a \in D \iff \forall \epsilon > 0: \exists \delta > 0: \forall x \in U_\delta(a) \cap D: f(x) \in U_\epsilon(f(x))$
+    \end{remark}
+
+    \begin{remark}
+        По Гейну:\\
+        f непрерывна в $a \in D \iff \forall (x_n)_{n=1}^\infty, x_n \to a, x_n \in D: f(x_n) \to f(a)$
+    \end{remark}
+
+    \begin{remark}
+        Если f непрерывна в $a \in D$, то $\lim{x}{a}f(x) = f(\lim{x}{a}x)$
+    \end{remark}
+
+    \begin{remark}
+        .\\
+        $\Delta x = x - a$ - приращение аргумента\\
+        $\Delta f(x) = f(x) - f(a)$ - приращение функции\\
+        f непрерывна в $a \in D \iff \lim{x}{0}\Delta f(x) = 0$
+    \end{remark}
+
+    \begin{definition}[Односторонняя непрерывность]
+        .\\
+        f непрерывна в точке $a \in D$ справа $\iff f(a+0) = f(a)$\\
+        f непрерывна в точке $a \in D$ слева $\iff f(a-0) = f(a)$\\
+    \end{definition}
+
+    \begin{definition}[Точки разрыва функции и их классификация]
+        .\\
+        \begin{enumerate}
+            \item Если $f(a+0), f(a-0), f(a)$ существуют и конечны и при этом не все равны друг другу, то f имеет разрыв первого рода в точке a, при этом:
+            \begin{itemize}
+                \item Разрыв устранимый $\iff f(a+0) = f(a-0)$
+                \item $f(a+0) - f(a-0)$ - скачок f в точке a
+            \end{itemize}
+            \item Если хотя бы одна из величин $f(a+0), f(a-0), f(a)$ бесконечна или не существуют, то f имеет разрыв второго рода в точке a.
+        \end{enumerate}
+    \end{definition}
+
+
+    \section{Теорема о стабилизации знака непрерывной функции. Теорема об арифметических действиях над непрерывными функциями. Теорема о непрерывности композиции.}
+
+    \begin{theorem}[Локальные свойства непрерывной функции]
+        .\\
+        \begin{enumerate}
+            \item Арифметические действия (по теореме об арифметических действиях с пределами)\\
+            $\forall (f: D \to \R), (g: D \to \R)$, f и g непрерывны в точке $a \in D$:
+            \begin{itemize}
+                \item $f + g, f \cdot g, |f|$ непрерывны в точке a
+                \item $g(a) \neq 0 \implies \frac{f}{g}$ непрерывна в точке a
+            \end{itemize}
+            \item Стабилизация знака (по теореме о стабилизации знака функции, имеющей предел)\\
+            $\forall (f: D \to \R)$, f непрерывна в точке $a \in D, f(a) \neq 0:$\\
+            $\exists U(a): \forall x \in U(a) \cap D: sign(f(x)) = sign(f(a))$
+            \item Непрерывность композиции (по замечанию о пределе непрерывной функции)\\
+            $\forall (f: D \to E), (g: E \to \R)$, f непрерывна в точке $a \in D$, g непрерывна в точке $f(a)$: $g \circ f$ непрерывна в точке a
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        .\\
+        3. $\forall \epsilon > 0: \exists \delta > 0: \exists \partial > 0: \forall x \in U_\partial(a): f(x) \in U_\delta(f(a)): g(f(x)) \in U_\epsilon(g(f(a))) \implies \lim{x}{a}\ g(f(x)) =_К g(f(x))$
+    \end{proof}
+
+
+    \section{Теорема Больцано-Коши о нуле непрерывной функции.}
+
+    \begin{theorem}[Больцано-Коши о нуле непрерывной функции]
+        \[\forall f\ непрерывной\ на\ [a, b], f(a)\cdot f(b) < 0: \exists c \in (a, b): f(c) = 0\]
+    \end{theorem}
+
+    \begin{proof}
+        .\\
+        \begin{enumerate}
+            \item Разделим [a, b] пополам.\\
+            Если $f(\frac{a+b}{2}) = 0$, то теорема доказана.\\
+            Иначе обозначим $[a_1, b_1]$ половину [a, b] т.ч. $f(a_1)f(b_1) < 0$\\
+            \item Если предыдущий шаг можно повторить лишь конечное число раз, не доказав теорему, то теорема может быть доказана за конечное число таких шагов.\\
+            Иначе $\exists([a_n, b_n])_{n=1}^\infty$ - последовательность стягивающихся отрезков (по построению) $\implies \exists! c \in \cap_{n=1}^\infty[a_n, b_n]$, причём $a_n \to c, b_n \to c$
+            \item f непрерывна в c $\implies \lim{x}{c} f(x) = f(c)$\\
+            $ \implies_Г f(a_n) \to f(c), f(b_n) \to f(c)$\\
+            $ \implies min(f(a_n), f(b_n)) \to f(c), max(f(a_n), f(b_n)) \to f(c)$
+            \item $\forall n \in \N: min(f(a_n), f(b_n)) < 0 < max(f(a_n), f(b_n)) \implies_{т\ о\ перех\ нерав\ в\ пределы} f(c) \leq 0 \leq f(c) \implies f(c) = 0$
+        \end{enumerate}
+    \end{proof}
+
+
+    \section{Теорема Больцано-Коши о промежуточном значении непрерывной функции.}
+
+    \begin{theorem}[Больцано-Коши о промежуточном значении непрерывной функции]
+        \[\forall f\ непрерывной\ на\ [a, b], y \in ((min(f(a), f(b)), max(f(a), f(b)): \exists c \in (a, b): f(c) = y\]
+    \end{theorem}
+
+    \begin{proof}
+        .\\
+        Обозначим $g(x) = f(x) - y \implies g(x)$ непрерывна на [a, b] по теореме об арифметических действиях над непрерывными функциями\\
+        $min(g(a), g(b)) < 0 < max(g(a), g(b)) \implies g(a)g(b) < 0 \implies_{т\ о\ нуле\ непрерыв\ функции} \exists c \in (a, b): g(c) = 0 \implies f(c) = y$
+    \end{proof}
+
+
+    \section{Лемма о характеристике промежутка и следствие о сохранении промежутка}
+
+    \begin{lemma}[Характеристика промежутка]
+        \[E \subset \R - промежуток \iff \forall x, y \in E: [x,y]\subset E\]
+    \end{lemma}
+
+    \begin{proof}
+        $\implies:$ очевидно\\
+        $\bimplies:$ Обозначим $m := infE, M := supE$\\
+        (?) $(m, M) \subset E$\\
+        $\forall z \in (m, M):$\\
+        $\exists \epsilon_m = z - m > 0: \exists x \in E: x < m + (z-m) = z$ (по определению inf)\\
+        $\exists \epsilon_M = M - z > 0: \exists y \in E: y > M - (M-z) = z$ (по определению sup)\\
+        $x,y \in E \implies_{по\ усл} [x,y] \subset E \implies z \in E$\\
+        Поэтому $(m, M) \subset E \implies E = \interval{m,M}$
+    \end{proof}
+
+    \begin{corollary}
+        (О сохранении промежутка)
+        \[\forall f\ непрерывной\ на\ \interval{a,b}: f(\interval{a,b}) - промежуток\]
+    \end{corollary}
+
+    \begin{proof}
+        .\\
+        $\forall c, d \in f(\interval{a,b}), c < d: [c, d] \subset f(\interval{a,b})$ (по т. о промежуточном значении) $\implies f(\interval{a,b})$ - промежуток\\
+        $f(\interval{a,b} = \interval{\inf{x\in\interval{a,b}}f(x),\sup{x\in\interval{a,b}}f(x)}$
+    \end{proof}
+
+
+    \section{Первая теорема Вейерштрасса о непрерывных функциях.}
+
+    \begin{theorem}[Первая теорема Вейерштрасса о непрерывных функциях]
+        \[\forall f\ непрерывной\ на\ [a, b]: f\ ограничена\ на\ [a,b]\]
+    \end{theorem}
+    \begin{proof}
+        .\\
+        Предположим противное: $\exists \sequencen{x}, x_n \in [a, b], f(x_n) \to \infty$\\
+        По прицепу выбора: $\exists x_{n_k} сходящаяся$\\
+        Обозначим $x_0 := \limn x_{n_k} \in [a,b]$\\
+        f непрерывна в $x_0 \implies \lim{x}{x_0}f(x) = f(x_0) \in \R$, но $f(x_n) \to \infty\ ?!!_Г$
+    \end{proof}
+
+
+    \section{Вторая теорема Вейерштрасса о непрерывных функциях. Следствие о сохранении отрезка.}
+
+    \begin{theorem}[Вторая теорема Вейерштрасса о непрерывных функциях]
+        \[\forall f\ непрерывной\ на\ [a,b]: \exists x_m, x_M \in [a,b], f(x_m) = \inf{x\in[a,b]}f(x), f(x_M) = \sup{x\in[a,b]}f(x)\]
+    \end{theorem}
+
+    \begin{proof}
+        .\\
+        Доказательство существования $x_M$, для $x_m$ аналогично\\
+        По первой теореме Вейерштрасса: $\exists M = \inf{x\in[a,b]}f(x) \in \R$\\
+        Предположим противное: $\forall x \in [a,b]: f(x) < M$\\
+        Рассмотрим $g(x) = \frac{1}{M-f(x)}$\\
+        $g(x)$ непрерывна на $[a,b]$ по теореме об арифметических действиях над непрерывными функциями, т.к. $\forall x \in [a,b]: f(x) < M$\\
+        По определению супремума: $\forall \epsilon = \frac{1}{n}, n\in\N: \exists x_n \in [a,b]: x_n > M - \frac{1}{n}$\\
+        $x_n \to M \implies g(x_n) \to \infty$, но по первой теореме Вейерштрасса g ограниченная ?!!
+
+        Ещё можно доказать аналогично теореме о нуле непрерывной функции (билет 33), если воспользоваться фактом: $sup(A \cup B) = max(sup(A), sup(B))$
+    \end{proof}
+
+
+    \section{Теорема о разрывах и непрерывности монотонной функции}
+
+    \begin{theorem}[О разрывах и непрерывности монотонной функции]
+        .\\
+        $\forall\ монотонная\ f: \interval{a,b}\to\R$:
+        \begin{enumerate}
+            \item f не имеет разрывов второго рода
+            \item f непрерывна $\iff \forall c,d: f(\interval{c,d})$ - промежуток
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        TODO проверить\\
+        НУО: $f\nearrow$
+        \begin{enumerate}
+            \item По теореме о пределе монотонной функции $\forall x_0 \in (a,b):$\\
+            $f(x_0-0) = \sup{x\in\langle a,x_0)}f(x) \in [f(\frac{a+x_0}{2}), f(x_0)] \subset \R$\\
+            $f(x_0+0) = \inf{x\in(x_0,b\rangle}f(x) \in [x_0, f(\frac{b+x_0}{2})] \subset \R$\\
+            Поэтому $f$ не терпит разрыв второго рода в точке $x_0$
+            \item $\implies:$ уже доказано\\
+            $\bimplies:$ Предположим противное: $f$ терпит разрыв в точке $x_0 \in (a, b)$\\
+            НУО: $f(x_0) \neq f(x_0 + 0)$ (1)\\
+            $f(x_0) \leq \inf{x\in(x_0,b\rangle}f(x) = f(x_0 + 0)$ (2)\\
+            $(1), (2) \implies f(x_0) < f(x_0 + 0)$\\\\
+            $\frac{f(x_0)+f(x_0+0)}{2} \in [f(x_0), f(x_0 + 0)] = [f(x_0), \inf{x\in(x_0,b\rangle}f(x)] \subset [f(x_0), f(\frac{x_0+b}{2})] \subset f([x_0, \frac{x_0+b}{2}]) \implies \exists x_1 \in [x_0, \frac{x_0+b}{2}]: f(x_1) = \frac{f(x_0)+f(x_0+0)}{2}$\\\\
+            Но $f(x_0) < \frac{f(x_0)+f(x_0+0)}{2}$, а $\forall x \in (x_0, \frac{x_0+b}{2}]: f(x) \geq \inf{x'\in(x_0,b\rangle}f(x') = f(x_0 + 0) > \frac{f(x_0)+f(x_0+0)}{2}$ ?!!
+
+        \end{enumerate}
+    \end{proof}
+
+
+    \section{Теорема о существовании и непрерывности обратной функции.}
+
+    \begin{theorem}[О существовании и непрерывности обратной функции]
+        \[\forall (f: \interval{a,b}\to\R), f\ строго\ монотонная, непрерывная, m=\inf{x\in\interval{a,b}}f(x), M=\sup{x\in\interval{a,b}}f(x):\]
+        \begin{enumerate}
+            \item $\exists f^{-1}: \interval{m, M} \to \interval{a,b}$
+            \item $f^{-1}$ монотонная и имеет тот же характер, что и $f$
+            \item $f^{-1}$ непрерывная
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \begin{enumerate}
+            \item $f$ строго монотонная $\implies f$ - инъекция\\
+            $f$ TODO
+        \end{enumerate}
+    \end{proof}
+
+    TODO Билеты 27, 28, проверить 38
+
+
+    \section{Понятие равномерной непрерывности функции. Теорема Кантора}
+
+    \begin{definition}
+        $(Равномерная \  непрерывность)$
+        \\ $f \ непрерывна \  на\  D \subset \R \Leftrightarrow \forall x_{0} \in D \  \forall \varepsilon > 0: \exists \delta = \delta(\varepsilon, x_{0}): \forall x \  таких, что \\ |x - x_{0}| < \delta \ выполняется \ |f(x) - f(x_{0})| \ge \varepsilon_{0}$
+    \end{definition}
+
+    \begin{theorem}
+        $(Кантора)$
+        \\$Если \ функция \ f \ непрерывна \ на  \ [a,b], \ то  \ f \ равномерно \ непрерывна.$
+    \end{theorem}
+
+    \begin{proof}
+        . \\
+        МОП: $\exists \varepsilon_{0} > 0: \forall  \delta > 0 \ \exists x_{1\delta}, x_{2\delta}: |x_{1,\delta} - x_{2,\delta}| < \delta, |f(x_{1,\delta}) - f(x_{2,\delta})|$
+        \\Пусть $\delta_{h} \underset{h \rightarrow \infty}{\longrightarrow}0 \ \exists x_{1,h}, x_{2,h} \in [a,b]: |x_{1,h} - x_{2,h}| < \delta_{h} \rightarrow 0\\ |f(x_{1,h}) - f(x_{2,h})| \ge  \varepsilon_{0}$
+        \\ По принципу выбора Больцано-Вейерштрасса:
+        \\ $\exists \ сходящаяся \ подпоследовательность \ (x_{1,n_{k}})_{k = 1}^{\infty}$
+        \\$(x_{1,n_{k}})_{k = 1}^{\infty}$, обозначим $x_{t,1} = x_{1, n_{k_{t}}}, x_{t,2} = x_{2, n_{k_{t}}} $
+        \\
+        \\Обозначим $x_{0} = \lim{t}{\infty} x_{t,1}$
+        \\Докажем, что  $x_{0} = \lim{t}{\infty} x_{t,2}$
+
+        \\$|x_{t,1} - x_{t,2}| < \delta_{n_{k_{t}}} \rightarrow 0$
+    \end{proof}
 
 \end{document}
