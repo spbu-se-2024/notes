@@ -1,10 +1,9 @@
-name: Build Calculus Notes - Semester 1
+name: Build Calculus Exam - Semester 1
 
 on:
   push:
     branches: [ master ]
-    paths: [ 'src/calculus/sem-1/**' ]
-    paths-ignore: [ 'src/calculus/sem-1/exam/**' ]
+    paths: [ 'src/calculus/sem-1/exam/**' ]
 
 jobs:
   build-latex:
@@ -18,12 +17,12 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: main.tex
-          working_directory: 'src/calculus/sem-1/'
+          working_directory: 'src/calculus/sem-1/exam/'
           compiler: latexmk
-          args: -jobname=notes-calculus-semester-1 -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+          args: -jobname=calculus-exam-semester-1 -pdf -file-line-error -halt-on-error -interaction=nonstopmode
 
       - name: Upload pdf document
         uses: actions/upload-artifact@v2
         with:
           name: Calculus Notes - Semester 1
-          path: 'src/calculus/sem-1/notes-calculus-semester-1.pdf'
+          path: 'src/calculus/sem-1/exam/calculus-exam-semester-1.pdf'
