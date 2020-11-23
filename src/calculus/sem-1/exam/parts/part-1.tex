@@ -1,0 +1,143 @@
+\documentclass[calculus]{subfiles}
+
+\begin{document}
+    \section{Понятие множества. Понятие отображения.}\label{sec:part-1}
+
+    \begin{definition}[Множество]
+        Множеством называют неупорядоченное объединение вполне различимых объектов.
+    \end{definition}
+
+    \bigskip
+
+    Способы задания множества:
+    \begin{enumerate}
+        \item Перечисление \(\{1, 2\}\)
+        \item Задание свойства \(\{x : P(x)\}\)
+        \item Множество множеств \(\{\Lambda_i\}_{i \in I}\)
+    \end{enumerate}
+
+    \bigskip
+
+    Операции над множествами:
+    \begin{enumerate}
+        \item \((A \subset B) := \forall x \in A : x \in B \)
+        \item \((A = B) := A \subset B \land B \subset A\)
+        \item \(A \cup B\) - объединение
+        \item \(A \cap B\) - пересечение
+        \item \(A \setminus B\) - разность
+        \item \(\neg A\) - дополнение
+        \item \(A \  \triangle \  B\ = (A \setminus B) \cup (B \setminus A) \) - симметрическая разность
+        \item \(A \times B\) - прямое произведение
+    \end{enumerate}
+
+    \bigskip
+
+    Законы де Моргана:
+    \begin{enumerate}
+        \item \(A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)\)
+        \item \(A \setminus (B \cap C) = (A \setminus B) \cup (A \setminus C)\)
+    \end{enumerate}
+
+    \bigskip
+
+    Дестрибутивность:
+    \begin{enumerate}
+        \item \(A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \)
+        \item \(A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \)
+    \end{enumerate}
+
+    \begin{n_definition}[Функция]
+        Функцией $f$ от $A$ в $B$ называют сопоставление $\forall x \in A \to f(x) \in B$
+    \end{n_definition}
+
+    \begin{notation}
+        Для функции $f$ из $A$ в $B$:
+        \begin{itemize}
+            \item $A$ - область определения
+            \item $B$ - область прибытия
+            \item $f(A)$ - область значений
+        \end{itemize}
+    \end{notation}
+
+    \begin{definition}[График функции]
+        $Г_f = \{(x, f(x)) : x \in A\}$
+    \end{definition}
+
+    \begin{definition}[Функция]
+        Функцией из $A$ в $B$ называют упорядоченную тройку $(A, B, Г)$, где A - область определения, B - область прибытия, Г - график функции.
+    \end{definition}
+
+    \begin{notation}[Функция]
+        $f: A \to B$ - функция из $A$ в $B$
+    \end{notation}
+
+    \begin{notation}[Сужение функции]
+        $\forall C \subset A:$ сужением $f$ на $C$ называется $f|_C$ т.ч.  $f|_C(x) = f(x)$  и $Г_{f|_C}$ = $Г_f \cap (С \times B) $
+    \end{notation}
+
+    \begin{notation}[Образ множества]
+        $\forall X \subset A: f(X) = \{f(x) : x \in X\}$ - образ множества X
+    \end{notation}
+
+    \begin{notation}[Прообраз множества]
+        $\forall Y \subset B: f^{-1}(Y) = \{x : f(x) \in Y\}$ - прообраз множества Y
+    \end{notation}
+
+    Отображение $f: A \to B$ называют:
+    \begin{itemize}
+        \item Инъективным, если $\forall x_1, x_2 \in X: (f(x_1) = f(x_2)) \implies (x_1 = x_2)$
+        \item Сюръективным, если $f(A) = B$
+        \item Биективным (или взаимно однозначным), если оно сюръективно и инъективно одновременно
+    \end{itemize}
+
+    \begin{notation}[Композиция функций]
+        $\forall (f:A \to B, \  g: B \to C): \exists ((g \circ f) : A \to C )$ - композиция $f$ и $g$ т.ч. $\forall x \in A: (g \circ f)(x) = g(f(x))$
+    \end{notation}
+
+    \begin{remark}
+        Композиция ассоциативна
+    \end{remark}
+
+    \begin{proof}
+        $((h \circ g) \circ f)(x) = (h \circ g)(f(x)) = h(g(f(x))) = h((g \circ f)(x)) = (h \circ (g \circ f))(x)$
+    \end{proof}
+
+    \begin{definition}[Тождественное отображение]
+        $id_A: A \to A$ т.ч. $id(x)=x$ - тождественное отображение
+    \end{definition}
+
+    \begin{definition}[Обратный]
+        $g: B \to A$ называется правым (левым) обратным к $f: A \to B$, если $f \circ g = id_B$ ($g \circ f = id_A$)
+    \end{definition}
+
+    \begin{remark}
+        Если у отображения есть правый и левый обратные, то они равны.
+    \end{remark}
+
+    \begin{remark}
+        .
+        \begin{enumerate}
+            \item f инъективно $\iff$ f обратимо слева
+            \item f сюръективно $\iff$ f обратимо справа
+            \item f биективно $\iff$ f обратимо
+        \end{enumerate}
+    \end{remark}
+
+    \begin{proof}
+        $\forall (f: A \to B)$:\\
+        1.  $\bimplies$:\\
+        Обозначим $g$ - левое обратное к $f$ \\
+        $\forall x_1, x_2$ т.ч. $f(x_1) = f(x_2)$: $x_1 = g(f(x_1)) = g(f(x_2)) = x_2$ \\
+        1.  $\implies$:\\
+        Выберем $z \in  A$ \\
+        Рассмотрим $g(y) = x$, если $\exists x$ т.ч $f(x)=y$. В противном случае $g(y) = z$ \\
+        $g(f(x)) = x$ (по построению) $\implies$ $g$ - обратное слево.\\
+        \\
+        2.  $\bimplies$: \\
+        Обозначим $g$ - правое обратное к $f$ \\
+        $\forall y \in B: \exists g(y)$ т.ч. $f(g(y)) = y$\\
+        2.  $\implies$: \\
+        $\forall y \in B: \exists x \in A$ т.ч. $f(x) = y$ \\
+        Пусть $g(y) = x \implies f(g(y)) = y \implies g$ - обратное справа.
+    \end{proof}
+\end{document}
