@@ -1,0 +1,31 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{common-math-macros}
+
+
+\RequirePackage{amssymb}
+\RequirePackage{bbm}
+\RequirePackage{mathtools}
+
+
+% Logic
+% \renewcommand{\implies}{\Rightarrow}
+% \newcommand{\bimplies}{\Leftarrow}
+% \renewcommand{\iff}{\Leftrightarrow}
+
+\newcommand*{\defeq}{\vcentcolon=}
+\newcommand*{\eqdef}{=\vcentcolon}
+
+
+% Sets
+\newcommand{\R}{\mathbb{R}}
+
+%! \N === {1, 2, 3, ...} (Целые положительные числа)
+%! \N* === {0, 1, 2, 3, ...} (Целые неотрицательные числа)
+\newcommand{\N}{\@ifstar\@N\@@N}
+\newcommand{\@N}{\mathbb{N}_0}
+\newcommand{\@@N}{\mathbb{N}}
+
+\newcommand*{\2}[1]{\mathbbm{2}^#1}
+
+
+\endinput

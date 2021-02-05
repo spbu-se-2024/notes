@@ -1,0 +1,128 @@
+\section{Множества}\label{sec:ch-1-sec-1}
+
+
+\begin{definition}[Наивная теория множеств]
+    \begin{compactenum}
+        \item Множество однозначно определяется своими объектами и может быть задано простым перечислением. $A = \{1,\ \lambda,\ word,\ \{IV,\ white\}\}$
+        \item Порядок элементов в множестве не имеет значения. $\{a,\ b\} = \{b,\ a\}$
+        \item Множество может быть задано с помощью предиката. $A = \{x : P(x)\}$ или $A = \{x\ |\ P(x)\}$
+    \end{compactenum}
+\end{definition}
+
+Будем говорить, что элемент $a$ принадлежит множеству $A$,
+или что этот элемент содержится в нём если $A = \{a,\ \ldots\}$, и будем обозначать это $a \in A$.
+
+\begin{definition}[Подмножество множества]
+    Будем говорить, что множество $A$ является \definiendum{подмножеством} множества $B$,
+    или что $B$ является \definiendum{надмножеством} $A$ если каждый элемент в $A$ также содержится в $B$.\\
+    [1ex]
+    Т.е. $A \subseteq B$ $\defeq \forall x \in A \Rightarrow x \in B$; $\subseteq$ --- \definiendum{отношение вложения}.
+\end{definition}
+
+\begin{sh-proposition}
+    $A \subseteq B \land B \subseteq A \Leftrightarrow A = B$
+\end{sh-proposition}
+
+\begin{definition}[Собственное подмножество]
+    $\subset$ — \definiendum{строгое вложение} a.k.a. \definiendum{собственное подмножество}: $A \subset B \Leftrightarrow A \subseteq B \land A \neq B$
+\end{definition}
+
+\begin{examples}[Множества и теоретико-множественные записи]
+    \begin{compactitem}
+        \item $\Phi=\{1, \lambda, $ слово, \{IV, white\}\}
+        \item Щ = \{1, a\} \quad Ъ = \{a, 1\}
+        \item слово $\in ~\Phi$ \quad \{$\lambda$, слово\} $\subseteq ~\Phi$
+    \end{compactitem}
+\end{examples}
+
+\begin{remark}
+    \begin{compactitem}
+        \item \{IV, white\} $\subseteq \Phi$ --- неверно
+        \item $\Lambda=$\{\{IV, white\}\} $\subseteq \Phi$ --- верно
+        \item $\Lambda \subset \Phi$ --- верно
+    \end{compactitem}
+\end{remark}
+
+\begin{definition}[Простые опреации над множествами]
+    \begin{compactitem}
+        \item[Объединение множеств] $A \cup B = \{x: x \in A \lor x \in B\}$
+        \item[Пересечение множеств] $A \cap B = \{x: x \in A \land x \in B\}$
+        \item[Разность множеств] $A \backslash B = \{x: x\in A \land x \notin B\}$
+    \end{compactitem}
+\end{definition}
+
+\begin{designation}[Множество множеств]
+    \begin{compactitem}
+        \item $\Lambda=\{\Lambda_1, \Lambda_2, \ldots, \Lambda_n\}$
+        \item $\Lambda=\{\Lambda_i\}$, $i \in I$, где $I$ — множество индексов, в данном контексте обычно \textbf{дискретное} (то есть конечное или счётное).
+    \end{compactitem}
+\end{designation}
+
+\begin{sh-definition}[Множество натуральных чисел]
+    $\N = \{1, 2, 3, \ldots\}$
+\end{sh-definition}
+
+\begin{designation}[Множество последовательных натуральных чисел]
+    \begin{compactitem}
+        \item $1:n=\{1, 2, \ldots, n\}$
+        \item $m:n=
+        \begin{cases}
+            \{m, m + 1, \ldots, n\}, m < n\\
+            \{m\}, m = n\\
+            \varnothing, m > n
+        \end{cases}$
+    \end{compactitem}
+\end{designation}
+
+\begin{sh-designation}
+    $\bigcup \Lambda = \{x: \exists ~i \in I: x \in \Lambda_i\}$
+\end{sh-designation}
+
+\begin{sh-designation}
+    $\bigcap \Lambda = \{x: x \in \Lambda_i ~\forall ~i \in I\}$
+\end{sh-designation}
+
+\begin{sh-designation}
+    $\2{A}$ — множество всех подмножеств множества $A$
+\end{sh-designation}
+
+\begin{remark}
+    Не надо читать это как «два в степени A», по крайней мере, на экзамене у Абрамовской так делать точно не стоит.
+\end{remark}
+
+\begin{sh-example}
+    $\Phi$ задано выше. Тогда $\{1, \lambda\} \subseteq \Phi \Rightarrow \{1, \lambda\} \in 2^\Phi$
+\end{sh-example}
+
+\begin{sh-designation}
+    $B \not\subseteq A \Leftarrow \exists ~b \in B: b \notin A$
+\end{sh-designation}
+
+\begin{remark}
+    $\varnothing \subseteq A ~\forall ~A$; $\varnothing \in 2^\Phi$, т.к. $\varnothing \subseteq \Phi$; $\varnothing \subseteq 2^\Phi$
+\end{remark}
+
+\begin{definition}[Мощность множества]
+    $\left|A\right|$ — число элементов в множестве $A$ или \definiendum{мощность} $A$
+\end{definition}
+
+\begin{sh-designation}
+    $A$ — конечно $\Rightarrow \left|A\right| < \infty$
+\end{sh-designation}
+
+\begin{sh-proposition}
+    $|A| < \infty \Rightarrow \left|\2{A}\right|=2^{\left|A\right|}$
+\end{sh-proposition}
+
+\begin{proof}
+    Кратко: индукция. Доказательство тривиально и предоставляется читателю в качестве лёгкого упражнения. (Скорее всего, уже предоставлялось на какой-нибудь алгебре, но вдруг нет)
+
+    Чуть более подробно: для доказательства данного факта воспользуемся методом математической индукции.
+
+    База индукции: $A=\varnothing \Rightarrow |A|=0, \2{A}=\{\varnothing\} \Rightarrow \left|\2{A}\right|=1$.
+
+    Переход индукции: пусть $|X|=n+1$ и известно, что $\forall ~A: |A|=n \left|2^A\right|=2^n$, покажем, что $\left|2^X\right|=2^{n+1}$.
+    Поскольку $n \geq 0 \Rightarrow ~\exists ~x \in X$, рассмотрим $X\backslash\{x\}=\widetilde{X}$: $|\widetilde{X}|=n \Rightarrow \left|2^{\widetilde{X}}\right|=2^n$.\\$2^X=2^{\widetilde{X}}\cup \{\chi\cup\{x\}:\chi \in 2^{\widetilde{X}}\}$; поскольку $2^{\widetilde{X}}\cap \{\chi\cup\{x\}:\chi \in 2^{\widetilde{X}}\}=\varnothing$, $|2^X|=\left|2^{\widetilde{X}}\right|+\\+ \left|\{\chi\cup\{x\}:\chi \in 2^{\widetilde{X}}\}\right|=2^n+2^n=2^{n+1}$.
+
+    Щепотка формализма: поговорим про то, как вообще работает индукция. Работает она так: если $\Sigma \subseteq \mathbb{N}$, $1 \in \Sigma$ и из того, что $n \in \Sigma$ следует, что $n+1 \in \Sigma$, то считают, что $\Sigma=\mathbb{N}$. Данное утверждение вроде как называют аксиомой индукции. Ну и, соответственно, база индукции — проверка того, что $1 \in \Sigma$, а переход индукции — проверка того, что если $n \in \Sigma$, то можно доказать, что $n + 1 \in \Sigma$, из чего следует, что $\Sigma=\mathbb{N}$; под $\Sigma$ обычно понимают множество натуральных чисел, для которых выполнено то или иное свойство (в данном случае, например, это множество таких $n$, что $\forall ~A: |A|=n \left|2^A\right|=2^n$); обычно всё это не пишут и обходятся тем, что над \guillemotleftщепоткой формализма\guillemotright.
+\end{proof}
