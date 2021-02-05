@@ -1,0 +1,28 @@
+name: Build Discrete Math Notes - Semester 1
+
+on:
+  push:
+    branches: [ master ]
+    paths: [ 'src/discrete-math/sem-1/**' ]
+
+jobs:
+  build-latex:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Set up repository
+        uses: actions/checkout@v2
+
+      - name: Compile LaTeX
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: main.tex
+          working_directory: 'src/discrete-math/sem-1/'
+          compiler: latexmk
+          args: -jobname=notes-discrete-math-semester-1 -pdf -file-line-error -halt-on-error -interaction=nonstopmode
+
+      - name: Upload pdf document
+        uses: actions/upload-artifact@v2
+        with:
+          name: Discrete Math Notes - Semester 1
+          path: 'src/discrete-math/sem-1/notes-discrete-math-semester-1.pdf'
