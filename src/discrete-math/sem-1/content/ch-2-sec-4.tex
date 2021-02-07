@@ -1,0 +1,67 @@
+\section{Отношения порядка}\label{sec:ch-2-sec-4}
+
+
+\begin{definition}[Отношение частичного порядка]
+    $R$ --- \definiendum{отношение частичного порядка} на $A$, если $R$ рефлексивно, транзитивно и антисимметрично.
+\end{definition}
+
+\begin{sh-designation}
+    Будем сокращать "частично упорядоченное множество"\ до \definiendum{чум} или \definiendum{poset} (partially ordered set).
+\end{sh-designation}
+
+\begin{sh-example}
+    Отношение вложенности в множество ($\subseteq$).
+\end{sh-example}
+
+\begin{theorem}
+    Пусть $A$ --- множество, а $R$ --- частичный порядок на $A$, тогда $\exists ~\Lambda \subseteq A \times 2^A$ --- отображение, т.ч. $(a, b) \in R \Leftrightarrow \lambda(a) \subseteq \lambda(b) \forall ~a, b \in A$.
+\end{theorem}
+
+\begin{proof}
+    $\forall ~a \in A \lambda(a) = \{x \in A : (x, a) \in R\}$
+
+    \quad $S = \{\lambda(a) | a \in A\}$
+
+    \quad $\Lambda = \{(a, \lambda(a)) | a \in A\}$ --- отношение на $A \times S$ (сюръективно по построению, доказательство инъективности приведено ниже)
+
+    Докажем, что $\lambda(a) = \lambda(b) \Leftrightarrow a = b$.
+
+    \fbox{$\Leftarrow$} очевидно
+
+    \fbox{$\Rightarrow$} пусть $\lambda(a) = \lambda(b)$; $(a, a) \in R$, так как $R$ рефлексивно $\Rightarrow a \in \lambda(b) \Rightarrow (a, b) \in R$; аналогично $(b, a) \in R \Rightarrow b = a$.
+
+    Пусть $(a, b) \in R \Leftrightarrow \forall ~x \in A: (x, a) \in R (x, b) \in R \Leftrightarrow \forall ~x \in \lambda(a) x \in \lambda(b) \Leftrightarrow \lambda(a) \subseteq \lambda(b)$.
+\end{proof}
+
+
+\begin{sh-example}
+    $A = \{1, 3, 4, 6, 8, 12\}$, $D = \{(a, b): b | a, a, b \in A\}$ --- частичный порядок, $\lambda(a)$ --- делители $a$.
+\end{sh-example}
+
+\begin{definition}[Отношение строгого частичного порядка]
+    $R$ --- \definiendum{отношение строгого частичного порядка}, если $R$ асимметрично и транзитивно.
+\end{definition}
+
+\begin{definition}
+    [Отношение (строгого) линейного порядка]
+    $A$ (строго) частично упорядочено $R$, $\forall ~a, b \in A (a, b) \in R \vee (b, a) \in R \vee a = b \Rightarrow R$ --- \definiendum{отношение (строгого) линейного порядка} на $A$.
+\end{definition}
+
+\begin{examples}
+    \begin{compactenum}
+        \item $\subseteq$ --- частичный, но не линейный порядок
+        \item $\leq$ --- линейный порядок
+        \item $<$ --- строгий линейный порядок.
+    \end{compactenum}
+\end{examples}
+
+\begin{definition}
+    Пусть $A$ частично упорядочено относительно $R$, тогда:
+
+    \begin{compactitem}
+        \item $m \in A$ --- \definiendum{минимальный} элемент, если $\forall ~x \in A (x, m) \notin R$.
+        \item $m \in A$ --- \definiendum{наименьший} элемент, если $\forall ~x \in A\backslash\{m\} (m, x) \in R$.
+        \item $M \in A$ --- \definiendum{максимальный} элемент, если $\forall ~x \in A (M, x) \notin R$.
+        \item $M \in A$ --- \definiendum{наибольший} элемент, если $\forall ~x \in A\backslash\{M\} (x, M) \in R$.
+    \end{compactitem}
+\end{definition}
