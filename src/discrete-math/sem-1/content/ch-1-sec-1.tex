@@ -28,26 +28,26 @@
 \end{definition}
 
 \begin{examples}[Множества и теоретико-множественные записи]
-    \begin{compactitem}
+    \begin{compactenum}
         \item $\Phi=\{1, \lambda, $ слово, \{IV, white\}\}
         \item Щ = \{1, a\} \quad Ъ = \{a, 1\}
         \item слово $\in ~\Phi$ \quad \{$\lambda$, слово\} $\subseteq ~\Phi$
-    \end{compactitem}
+    \end{compactenum}
 \end{examples}
 
 \begin{remark}
-    \begin{compactitem}
+    \begin{compactenum}
         \item \{IV, white\} $\subseteq \Phi$ --- неверно
         \item $\Lambda=$\{\{IV, white\}\} $\subseteq \Phi$ --- верно
         \item $\Lambda \subset \Phi$ --- верно
-    \end{compactitem}
+    \end{compactenum}
 \end{remark}
 
 \begin{definition}[Простые опреации над множествами]
     \begin{compactitem}
-        \item[Объединение множеств] $A \cup B = \{x: x \in A \lor x \in B\}$
-        \item[Пересечение множеств] $A \cap B = \{x: x \in A \land x \in B\}$
-        \item[Разность множеств] $A \backslash B = \{x: x\in A \land x \notin B\}$
+        \item \definiendum{Объединение множеств} $A \cup B = \{x: x \in A \lor x \in B\}$
+        \item \definiendum{Пересечение множеств} $A \cap B = \{x: x \in A \land x \in B\}$
+        \item \definiendum{Разность множеств} $A \backslash B = \{x: x\in A \land x \notin B\}$
     \end{compactitem}
 \end{definition}
 
@@ -86,9 +86,9 @@
     $\2{A}$ — множество всех подмножеств множества $A$
 \end{sh-designation}
 
-\begin{remark}
+\begin{sh-remark}
     Не надо читать это как «два в степени A», по крайней мере, на экзамене у Абрамовской так делать точно не стоит.
-\end{remark}
+\end{sh-remark}
 
 \begin{sh-example}
     $\Phi$ задано выше. Тогда $\{1, \lambda\} \subseteq \Phi \Rightarrow \{1, \lambda\} \in 2^\Phi$
@@ -98,13 +98,13 @@
     $B \not\subseteq A \Leftarrow \exists ~b \in B: b \notin A$
 \end{sh-designation}
 
-\begin{remark}
+\begin{sh-remark}
     $\varnothing \subseteq A ~\forall ~A$; $\varnothing \in 2^\Phi$, т.к. $\varnothing \subseteq \Phi$; $\varnothing \subseteq 2^\Phi$
-\end{remark}
+\end{sh-remark}
 
-\begin{definition}[Мощность множества]
+\begin{sh-definition}[Мощность множества]
     $\left|A\right|$ — число элементов в множестве $A$ или \definiendum{мощность} $A$
-\end{definition}
+\end{sh-definition}
 
 \begin{sh-designation}
     $A$ — конечно $\Rightarrow \left|A\right| < \infty$
