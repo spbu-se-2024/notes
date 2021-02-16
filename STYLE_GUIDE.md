@@ -40,8 +40,3 @@
 - "matan"
 - "Calculus"
 - "src_code"
-
-
-## LaTeX
-
-Work in progress

@@ -1,0 +1,201 @@
+%
+%  __________________________________________________________________________
+% /\                                                                         \
+% \_|           _  _ ____ ___ _  _ ____ _  _ ____ ___ _ ____ ____            |
+%   |           |\/| |__|  |  |__| |___ |\/| |__|  |  | |    [__             |
+%   |           |  | |  |  |  |  | |___ |  | |  |  |  | |___ ___]            |
+%   |                                                                        |
+%   |       ____ ____ _  _ ____ _ ____ _  _ ____ ____ ___ _ ____ _  _        |
+%   |       |    |  | |\ | |___ | | __ |  | |__/ |__|  |  | |  | |\ |        |
+%   |       |___ |__| | \| |    | |__] |__| |  \ |  |  |  | |__| | \|        |
+%   |                                                                        |
+%   |   _____________________________________________________________________|_
+%    \_/_______________________________________________________________________/
+%
+
+
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{math-config}
+
+
+% AMS LaTeX packages (except amsthm - causes coflicts with ntheorem)
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+% mathtools - fixes and enhances AmS LaTeX
+\RequirePackage{mathtools}
+% bm and bbm - bold math symbols
+\RequirePackage{bm}
+\RequirePackage{bbm}
+
+
+%==============================================================================%
+%                                                                              %
+%                                 Math Symbols                                 %
+%                                                                              %
+%==============================================================================%
+
+% Fix General Spacing
+\thinmuskip=7mu
+% \medmuskip=4mu
+% \thickmuskip=5mu
+
+% Fix Specific Spacing
+\renewcommand*{\mathellipsis}{\mathinner{{\ldotp}\:{\ldotp}\:{\ldotp}}}
+
+\let\@forall\forall
+\renewcommand{\forall}{{\thinmuskip=1.5mu \@forall \,}}
+
+\let\@exists\exists
+\renewcommand{\exists}{{\thinmuskip=2.5mu \@exists \,}}
+
+
+% Set Operations, Logic, and Arrow-like symbols
+\newcommand\symdif{\bigtriangleup}
+
+\newcommand\existu{{\thinmuskip=2.5mu \@exists! \,}}
+
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\limp}{\Leftarrow}
+\renewcommand{\iff}{\Leftrightarrow}
+
+\newcommand{\ximp}[2][]{\xRightarrow[#1]{#2}}
+\newcommand{\xlimp}[2][]{\xLeftarrow[#1]{#2}}
+\newcommand{\xiff}[2][]{\xLeftrightarrow[#1]{#2}}
+
+\newcommand{\iffdef}{\xiff{def}}
+
+
+% Sets
+\newcommand{\@N}{\mathbb{N}}
+\newcommand{\@@N}{\mathbb{N}_0}
+\newcommand{\N}{\@ifstar\@@N\@N}
+
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+
+\newcommand*{\2}[1]{\mathbbm{2}^#1}
+
+
+% Paired Delimiters
+\DeclarePairedDelimiter\p{(}{)}
+\DeclarePairedDelimiter\set{\{}{\}}
+\DeclarePairedDelimiter\sqbr{[}{]}
+\DeclarePairedDelimiter\geng{\langle}{\rangle}
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+% Swap the definition of normal and starred versions of the commands
+\let\@p\p
+\renewcommand{\p}{\@ifstar{\@p}{\@p*}}
+
+\let\@set\set
+\renewcommand{\set}{\@ifstar{\@set}{\@set*}}
+
+\let\@sqbr\sqbr
+\renewcommand{\sqbr}{\@ifstar{\@sqbr}{\@sqbr*}}
+
+\let\@geng\geng
+\renewcommand{\geng}{\@ifstar{\@geng}{\@geng*}}
+
+\let\@abs\abs
+\renewcommand{\abs}{\@ifstar{\@abs}{\@abs*}}
+
+\let\@norm\norm
+\renewcommand{\norm}{\@ifstar{\@norm}{\@norm*}}
+
+\let\@ceil\ceil
+\renewcommand{\ceil}{\@ifstar{\@ceil}{\@ceil*}}
+
+\let\@floor\floor
+\renewcommand{\floor}{\@ifstar{\@floor}{\@floor*}}
+
+
+%==============================================================================%
+%                                                                              %
+%                               Math Enviroments                               %
+%                                                                              %
+%==============================================================================%
+
+% TODO : Avoid pagebreak inside enviroments
+
+\RequirePackage[thmmarks, thref, hyperref]{ntheorem}
+
+
+\newtheoremstyle{general-style}%
+{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont ##1\ ##2\theorem@separator}\hbox{\strut}}}]}%
+{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont ##1\ ##2\ (##3)\theorem@separator}\hbox{\strut}}}]}
+
+\newtheoremstyle{nonumbergeneral-style}%
+{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont ##1\theorem@separator}\hbox{\strut}}}\hspace{1.5em}]}%
+{\item[\rlap{\vbox{\hbox{\hskip\labelsep \theorem@headerfont ##1\ (##3)\theorem@separator}\hbox{\strut}}}\hspace{1.5em}]}
+
+\newtheoremstyle{short-style}%
+{\item[\hskip\labelsep \theorem@headerfont ##1\ ##2\theorem@separator]}%
+{\item[\hskip\labelsep \theorem@headerfont ##1\ ##2\ (##3)\theorem@separator]}
+
+\newtheoremstyle{nonumbershort-style}%
+{\item[\hskip\labelsep \theorem@headerfont ##1\theorem@separator]}%
+{\item[\hskip\labelsep \theorem@headerfont ##1\ (##3)\theorem@separator]}
+
+% Adjust Definiendum Style
+\newcommand*{\definiendum}[1]{$\bm{\textbf{#1}}$}
+
+
+% Assign General Style
+\theoremstyle{general-style}
+\theoremheaderfont{\kern-0.5cm\normalfont\smallskip\bfseries}\theorembodyfont{\normalfont}
+\theoremindent=0.5cm
+
+\theoremseparator{:}\theoremsymbol{}
+\theorempreskip{\topsep\smallskip}
+\newtheorem{theorem}{Теорема}[section]
+\newtheorem{lemma}[theorem]{Лемма}
+\newtheorem{proposition}[theorem]{Предложение}
+\newtheorem{corolary}{Следствие}[theorem]
+
+\newtheorem{definition}[theorem]{Определение}
+
+\newtheorem{examples}[theorem]{Примеры}
+\newtheorem{example}[theorem]{Пример}
+
+\newtheorem{remark}[theorem]{Замечание}
+\newtheorem{designation}[theorem]{Обозначение}
+
+\theoremseparator{.}\theoremsymbol{\flushright\ensuremath{\Box}}
+\theorempreskip{\topsep}
+\newtheorem*{proof}{Доказательство}
+
+
+% Assign Short Style
+\theoremstyle{short-style}
+\theoremheaderfont{\normalfont\smallskip\bfseries}\theorembodyfont{\normalfont}
+\theoremindent=0cm
+
+\theoremseparator{:}\theoremsymbol{}
+\theorempreskip{\topsep\smallskip}
+\newtheorem{sh-theorem}{Теорема}[section]
+\newtheorem{sh-lemma}[theorem]{Лемма}
+\newtheorem{sh-proposition}[theorem]{Предложение}
+\newtheorem{sh-corolary}{Следствие}[theorem]
+
+\newtheorem{sh-definition}[theorem]{Определение}
+
+\newtheorem{sh-examples}[theorem]{Примеры}
+\newtheorem{sh-example}[theorem]{Пример}
+
+\newtheorem{sh-remark}[theorem]{Замечание}
+\newtheorem{sh-designation}[theorem]{Обозначение}
+
+\theoremseparator{.}\theoremsymbol{\ensuremath{\Box}}
+\theorempreskip{\topsep}
+\newtheorem*{sh-proof}{Доказательство}
+
+
+
+\endinput
